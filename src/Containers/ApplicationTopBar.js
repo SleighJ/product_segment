@@ -7,7 +7,7 @@ class Topbar extends Component {
 
 	render () {
 		return (
-			<div id={'topbar'} style={{width: '100%', height: '10rem', backgroundColor: 'rgb(38, 165, 132)', position: 'relative', zIndex: '100'}}></div>
+			<div id={'topbar'} style={{width: '100%', height: '10rem', backgroundColor: 'rgb(38, 165, 132)', position: 'relative', zIndex: '95'}}></div>
 		)
 	}
 }

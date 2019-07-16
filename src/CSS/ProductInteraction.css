@@ -9,17 +9,12 @@
 
 #product-interaction-master-row #header {
     margin-left: -1.5%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    color: rgb(88, 88, 88);
+
 }
 
-
-/*#define-segment #header {*/
-    /*margin: 7%;*/
-    /*color: rgb(88, 88, 88);*/
-    /*fontFamily: IBM Plex Sans;*/
-/*}*/
-
-/*#define-segment p {*/
-    /*margin: 7%;*/
-    /*color: rgb(88, 88, 88);*/
-    /*fontFamily: IBM Plex Sans;*/
-/*}*/
+#dropdown-row #header {
+    margin-left: -20%;
+}

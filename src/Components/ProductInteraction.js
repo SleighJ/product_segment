@@ -25,8 +25,8 @@ class ProductInteraction extends Component {
 						</Grid.Column>
 					</Grid.Row>
 
-					<Grid.Row style={{display: 'flex'}}>
-						<Grid.Column style={{padding: '1%', width: '20%'}} width={3}>
+					<Grid.Row id={'dropdown-row'} style={{display: 'flex', paddingTop: '1%'}}>
+						<Grid.Column style={{ marginLeft: '-2%', width: '20%'}} width={3}>
 							<Dropdown
 								id={'asdf'}
 								className={'dropdown'}
@@ -48,7 +48,7 @@ class ProductInteraction extends Component {
 							> +More </Button>
 
 						</Grid.Column>
-						<Grid.Column style={{padding: '1%', width: '15%'}} width={3}>
+						<Grid.Column style={{marginLeft: '1%', width: '15%'}} width={3}>
 							<Dropdown
 								id={'asdf-1'}
 								className={'dropdown'}
@@ -62,7 +62,7 @@ class ProductInteraction extends Component {
 							/>
 						</Grid.Column>
 
-						<Grid.Column style={{padding: '1%', width: '55%', textAlign:'left'}} width={3}>
+						<Grid.Column style={{marginLeft: '1%', width: '55%', textAlign:'left'}} width={3}>
 							<Dropdown
 								id={'asdf-2'}
 								placeholder={'Select Item'}
@@ -79,7 +79,7 @@ class ProductInteraction extends Component {
 								// value={ selectedGarments }
 							/>
 						</Grid.Column>
-						<Grid.Column align={'center'} style={{padding: '1%', width: '10%'}} width={3}>
+						<Grid.Column align={'center'} style={{marginLeft: '1%', marginRight: '1%', width: '10%'}} width={3}>
 							<Button
 								align={'center'}
 								// onClick={ this.deleteCurrentProduction }

@@ -11,9 +11,9 @@ function App() {
   return (
     <div style={{ backgroundColor: 'rgb(242, 243, 243)' }}>
 
+		<ApplicationSideBar />
         <ApplicationHeader />
         <ApplicationTopBar />
-        <ApplicationSideBar />
 
 		<Grid style={{ paddingLeft: '13.5%'}}>
             <Grid.Row className='App-Container-Row-1' style={{margin: '2%'}}>
