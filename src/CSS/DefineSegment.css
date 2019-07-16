@@ -1,0 +1,18 @@
+.segment {
+    borderRadius: 1;
+    height: 100%;
+    boxShadow: none;
+    fontFamily: IBM Plex Sans;
+    fontWeight: bold;
+    color: rgb(88, 88, 88);
+    border: 1.5px solid lightGrey;
+}
+
+.header {
+    fontFamily: IBM Plex Sans;
+    fontSize: 1.25rem;
+    color: rgb(88, 88, 88);
+    marginTop: 1.5%;
+    marginBottom: 1.5%;
+    marginRight: 1.5%;
+}
