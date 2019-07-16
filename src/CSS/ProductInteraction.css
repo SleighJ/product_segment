@@ -1,9 +1,14 @@
 .segment {
+    padding: 0;
+    /*margin: 1% !important;*/
+    /*margin-left: 2% !important;*/
+    width: 100%;
     borderRadius: 1;
     height: 100%;
     boxShadow: none;
     fontFamily: IBM Plex Sans;
     color: rgb(88, 88, 88);
+    border: 1.5px solid lightGrey;
 }
 
 .header {
