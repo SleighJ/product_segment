@@ -34,13 +34,13 @@ export default class ApplicationContainer extends Component {
 
 					{/*row 2: Product Interaction and Product History*/}
 					<Segment id={'interaction-history-segment'}>
-						<Grid.Row id={'row'} width={16}>
+						<Grid.Row width={16}>
 							<ProductInteraction />
 						</Grid.Row>
 
 						<Divider />
 
-						<Grid.Row id={'row'}>
+						<Grid.Row width={16}>
 							<TimeOfInteraction />
 						</Grid.Row>
 					</Segment>

@@ -9,6 +9,8 @@ import {
 	Icon
 } from 'semantic-ui-react';
 
+import '../CSS/TimeOfInteraction.css';
+
 class TimeOfInteraction extends Component {
 	constructor(props){
 		super(props);
@@ -21,19 +23,24 @@ class TimeOfInteraction extends Component {
 	render(){
 		return (
 
-				<Grid.Row>
+				<Grid.Row id={'time-of-interaction-master-row'}>
+
 					<Grid.Row style={{display: 'flex'}}>
-						<Grid.Column style={{width: '120%'}}>
-							<Header as={'h4'} align={'left'} style={{fontFamily: 'IBM Plex Sans', fontSize: '1.25rem', color: 'rgb(88, 88, 88)', margin: '2%', marginBottom: '5%',}}>Time of interaction <span style={{color: 'lightGrey'}}> - When did this purchase take place? </span> </Header>
+
+						<Grid.Column width={12} style={{width: '100%'}}>
+							<Header id={'header'} as={'h4'} align={'left'} style={{fontFamily: 'IBM Plex Sans'}}>Time of interaction
+								<span style={{color: 'lightGrey'}}> - When did this purchase take place? </span>
+							</Header>
 						</Grid.Column>
 
 						<Grid.Column style={{width: '80%'}}>
-							<Button floated={'right'} size={'tiny'} style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey'}}> <Icon name={'time'}> </Icon>Remove this time period</Button>
+							<Button floated={'right'} size={'tiny'} style={{marginRight: '2%', fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey'}}> <Icon name={'time'}> </Icon>Remove this time period</Button>
 						</Grid.Column>
+
 					</Grid.Row>
 
-					<Grid.Row style={{display: 'flex'}}>
-						<Grid.Column style={{padding: '1%', width: '20%'}} width={3}>
+					<Grid.Row style={{display: 'flex', padding: '1%'}}>
+						<Grid.Column style={{ marginLeft: '-1%', width: '20%'}} width={3}>
 							<Dropdown
 								placeholder='Interaction'
 								fluid
@@ -44,7 +51,7 @@ class TimeOfInteraction extends Component {
 								// text={ productInteraction ? productInteraction : 'Interaction' }
 							/>
 						</Grid.Column>
-						<Grid.Column style={{padding: '1%', width: '15%'}} width={3}>
+						<Grid.Column style={{ marginLeft: '1%', width: '15%'}} width={3}>
 							<Dropdown
 								placeholder='On'
 								fluid
@@ -56,7 +63,7 @@ class TimeOfInteraction extends Component {
 							/>
 						</Grid.Column>
 
-						<Grid.Column style={{padding: '1%', width: '65%'}} width={3} align={'left'}>
+						<Grid.Column style={{width: '65%'}} width={3} align={'left'}>
 							{/*{*/}
 								{/*this.state.openCalendar ?*/}
 									{/*<Calendar*/}

@@ -1,15 +1,18 @@
-#product-interaction-master-row {
+#time-of-interaction-master-row {
     margin: unset;
     padding: unset;
 }
 
-#product-interaction-master-row .row {
+#time-of-interaction-master-row .row {
     margin: unset;
 }
 
-#product-interaction-master-row #header {
+#time-of-interaction-master-row {
     margin-left: -1.5%;
     margin-top: 1%;
     margin-bottom: 2%;
+}
+
+#time-of-interaction-master-row #header {
     color: rgb(88, 88, 88);
 }
