@@ -4,7 +4,8 @@ import DefineSegment from '../Components/DefineSegment';
 import SegmentSize from '../Components/SegmentSize';
 import ProductInteraction from '../Components/ProductInteraction';
 import TimeOfInteraction from '../Components/TimeOfInteraction';
-
+import Technology from '../Components/Technology';
+import NewCondition from '../Components/NewCondition';
 
 import {
 	Grid,
@@ -45,6 +46,17 @@ export default class ApplicationContainer extends Component {
 
 					</Grid.Row>
 
+					<Grid.Row>
+
+						<Technology />
+
+					</Grid.Row>
+
+					<Grid.Row>
+
+						<NewCondition />
+
+					</Grid.Row>
 
 				</Grid>
 			</div>
