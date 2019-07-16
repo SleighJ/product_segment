@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Segment, Dropdown, Button, Divider, Header, Icon, Progress } from 'semantic-ui-react';
+import { Grid, Segment, Dropdown, Button, Header, Icon } from 'semantic-ui-react';
 
 class Technology extends Component {
 	constructor(props){

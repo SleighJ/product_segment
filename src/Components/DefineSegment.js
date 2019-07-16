@@ -16,9 +16,9 @@ class DefineSegment extends Component {
 		return(
 				<Segment id={'define-segment'}>
 
-					<Header id={'header'} as={'h4'}>Define a new Segment</Header>
+					<Header id={'header'} as={'h4'} style={{fontFamily: 'IBM Plex Sans'}}>Define a new Segment</Header>
 
-					<p>Add a condition to define a segment. The more conditions you add, the more specific your segment will be</p>
+					<p style={{fontFamily: 'IBM Plex Sans'}}>Add a condition to define a segment. The more conditions you add, the more specific your segment will be</p>
 
 				</Segment>
 		)

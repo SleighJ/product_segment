@@ -9,7 +9,8 @@ import NewCondition from '../Components/NewCondition';
 
 import {
 	Grid,
-	Divider
+	Divider,
+	Segment,
 } from 'semantic-ui-react';
 
 import '../CSS/ApplicationContainer.css';
@@ -21,7 +22,7 @@ export default class ApplicationContainer extends Component {
 				<Grid>
 
 					{/*row 1: define segment and segment size*/}
-					<Grid.Row id={'row1'} columns={2}>
+					<Grid.Row id={'row'} columns={2}>
 						<Grid.Column id={'define-segment'} width={6}>
 							<DefineSegment />
 						</Grid.Column>
@@ -32,24 +33,25 @@ export default class ApplicationContainer extends Component {
 					</Grid.Row>
 
 					{/*row 2: Product Interaction and Product History*/}
-					<Grid.Row id={'row'} width={16}>
-						<ProductInteraction />
-					</Grid.Row>
+					<Segment id={'interaction-history-segment'}>
+						<Grid.Row id={'row'} width={16}>
+							<ProductInteraction />
+						</Grid.Row>
 
-					<Divider section={true} />
+						<Divider />
 
-					{/*row 3: Time of Interaction*/}
-					<Grid.Row>
-						<TimeOfInteraction />
-					</Grid.Row>
+						<Grid.Row id={'row'}>
+							<TimeOfInteraction />
+						</Grid.Row>
+					</Segment>
 
 					{/*row 4: Technology*/}
-					<Grid.Row>
+					<Grid.Row id={'row'}>
 						<Technology />
 					</Grid.Row>
 
 					{/*row 5: new Condition*/}
-					<Grid.Row>
+					<Grid.Row id={'row'}>
 						<NewCondition />
 					</Grid.Row>
 

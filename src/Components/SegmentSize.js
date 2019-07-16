@@ -23,9 +23,9 @@ class SegmentSize extends Component {
 		return (
 				<Segment id={'segment-size'}>
 
-					<Header id={'header'} as={'h4'}> Estimated segment size </Header>
+					<Header id={'header'} as={'h4'} style={{fontFamily: 'IBM Plex Sans'}}> Estimated segment size </Header>
 
-					<p> % of your total traffic expected to join based on a sample of historical data </p>
+					<p style={{fontFamily: 'IBM Plex Sans'}}> % of your total traffic expected to join based on a sample of historical data </p>
 
 					<Progress id={'progress'} color={'green'} size={'medium'} percent={ Number.parseFloat(segmentSize).toFixed(2) } progress/>
 

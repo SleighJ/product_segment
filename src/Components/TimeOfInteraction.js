@@ -21,8 +21,6 @@ class TimeOfInteraction extends Component {
 	render(){
 		return (
 
-			<Segment>
-
 				<Grid.Row>
 					<Grid.Row style={{display: 'flex'}}>
 						<Grid.Column style={{width: '120%'}}>
@@ -74,8 +72,6 @@ class TimeOfInteraction extends Component {
 						</Grid.Column>
 					</Grid.Row>
 				</Grid.Row>
-
-			</Segment>
 		)
 	}
 }

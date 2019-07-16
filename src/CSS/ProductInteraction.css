@@ -1,20 +1,25 @@
-.segment {
-    padding: 0;
-    width: 97%;
-    borderRadius: 1;
-    height: 100%;
-    boxShadow: none;
-    fontFamily: IBM Plex Sans;
-    color: rgb(88, 88, 88);
-    border: 1.5px solid lightGrey;
+#product-interaction-master-row {
+    margin: unset;
+    padding: unset;
+}
+
+#product-interaction-master-row .row {
+    margin: unset;
+}
+
+#product-interaction-master-row #header {
+    margin-left: -1.5%;
 }
 
 
-.header {
-    fontFamily: IBM Plex Sans;
-    fontSize: 1.25rem;
-    color: rgb(88, 88, 88);
-    marginTop: 1.5%;
-    marginBottom: 1.5%;
-    marginRight: 1.5%;
-}
+/*#define-segment #header {*/
+    /*margin: 7%;*/
+    /*color: rgb(88, 88, 88);*/
+    /*fontFamily: IBM Plex Sans;*/
+/*}*/
+
+/*#define-segment p {*/
+    /*margin: 7%;*/
+    /*color: rgb(88, 88, 88);*/
+    /*fontFamily: IBM Plex Sans;*/
+/*}*/

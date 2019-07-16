@@ -1,23 +1,24 @@
 #segment-size {
-    color: rgb(88, 88, 88);
-    fontFamily: IBM Plex Sans;
+    height: 100%;
 }
 
 #segment-size #header {
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-bottom: 4%;
+    margin: 4%;
     color: rgb(88, 88, 88);
-    fontFamily: IBM Plex Sans;
+    fontFamily: IBM Plex Sans !important;
 }
 
 #segment-size p {
-    margin: 2%;
+    margin: 4%;
     color: rgb(88, 88, 88);
-    fontFamily: IBM Plex Sans;
+    fontFamily: IBM Plex Sans !important;
 }
 
 #segment-size #progress {
-    margin: 2%;
+    margin: 3%;
+}
+
+
+.ui.green.progress .bar {
+    background-color: rgb(38, 165, 132) !important;
 }
