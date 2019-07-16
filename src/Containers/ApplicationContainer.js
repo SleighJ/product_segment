@@ -21,8 +21,8 @@ export default class ApplicationContainer extends Component {
 				<Grid>
 
 					{/*row 1: define segment and segment size*/}
-					<Grid.Row id={'row'} columns={2}>
-						<Grid.Column width={6}>
+					<Grid.Row id={'row1'} columns={2}>
+						<Grid.Column id={'define-segment'} width={6}>
 							<DefineSegment />
 						</Grid.Column>
 
@@ -36,7 +36,7 @@ export default class ApplicationContainer extends Component {
 						<ProductInteraction />
 					</Grid.Row>
 
-					<Divider section={true}/>
+					<Divider section={true} />
 
 					{/*row 3: Time of Interaction*/}
 					<Grid.Row>

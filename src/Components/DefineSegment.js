@@ -14,7 +14,7 @@ class DefineSegment extends Component {
 
 	render(){
 		return(
-				<Segment id={'segment'}>
+				<Segment id={'define-segment'}>
 
 					<Header id={'header'} as={'h4'}>Define a new Segment</Header>
 

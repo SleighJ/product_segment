@@ -21,11 +21,13 @@ class ProductInteraction extends Component {
 
 				<Grid.Row style={{display: 'flex'}}>
 					<Grid.Column width={12} style={{width: '100%'}}>
-						<Header as={'h4'} align={'left'} style={{fontFamily: 'IBM Plex Sans', fontSize: '1.25rem', color: 'rgb(88, 88, 88)', margin: '2%', marginBottom: '5%'}}>Product interactions <span style={{color: 'lightGrey'}}> - What products have they interacted with? </span> </Header>
+						<Header id={'header'} as={'h4'} align={'left'}>Product interactions
+							<span style={{color: 'lightGrey'}}> - What products have they interacted with? </span>
+						</Header>
 					</Grid.Column>
 				</Grid.Row>
 
-				<Grid.Row style={{display: 'flex', maxHeight: '100%'}}>
+				<Grid.Row style={{display: 'flex'}}>
 					<Grid.Column style={{padding: '1%', width: '20%'}} width={3}>
 						<Dropdown
 							id={'asdf'}

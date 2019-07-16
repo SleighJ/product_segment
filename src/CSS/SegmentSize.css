@@ -1,16 +1,23 @@
-.segment {
-    borderRadius: 1;
-    height: 100%;
-    boxShadow: none;
-    fontFamily: IBM Plex Sans;
+#segment-size {
     color: rgb(88, 88, 88);
+    fontFamily: IBM Plex Sans;
 }
 
-.header {
-    fontFamily: IBM Plex Sans;
-    fontSize: 1.25rem;
+#segment-size #header {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 4%;
     color: rgb(88, 88, 88);
-    marginTop: 1.5%;
-    marginBottom: 1.5%;
-    marginRight: 1.5%;
+    fontFamily: IBM Plex Sans;
+}
+
+#segment-size p {
+    margin: 2%;
+    color: rgb(88, 88, 88);
+    fontFamily: IBM Plex Sans;
+}
+
+#segment-size #progress {
+    margin: 2%;
 }

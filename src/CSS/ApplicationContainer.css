@@ -1,4 +1,14 @@
 .row {
-    border: 1px solid black;
-    margin: 2%;
+    margin-left: 4%;
+    margin-top: 2%;
+    margin-bottom: 0;
+}
+
+#row1 {
+    /*border: 1px solid black;*/
+    /*max-height: 15rem;*/
+}
+
+#define-segment {
+    padding: 0 !important;
 }

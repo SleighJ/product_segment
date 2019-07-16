@@ -21,13 +21,13 @@ class SegmentSize extends Component {
 		const { segmentSize } = this.state;
 
 		return (
-				<Segment id={'segment'}>
+				<Segment id={'segment-size'}>
 
 					<Header id={'header'} as={'h4'}> Estimated segment size </Header>
 
 					<p> % of your total traffic expected to join based on a sample of historical data </p>
 
-					<Progress color={'green'} size={'medium'} percent={ Number.parseFloat(segmentSize).toFixed(2) } progress/>
+					<Progress id={'progress'} color={'green'} size={'medium'} percent={ Number.parseFloat(segmentSize).toFixed(2) } progress/>
 
 				</Segment>
 		);
