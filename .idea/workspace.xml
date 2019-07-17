@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08933b8c-6e0e-497a-b47d-bf91cc200fc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/TimeOfInteraction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TimeOfInteraction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Containers/ApplicationContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/ApplicationContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JSON/JSON.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/JSON/JSON.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,14 +36,14 @@
         <counts>
           <entry key="css" value="3097" />
           <entry key="html" value="2" />
-          <entry key="js" value="15147" />
+          <entry key="js" value="15454" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="3097" />
           <entry key="HTML" value="2" />
-          <entry key="JavaScript" value="15147" />
+          <entry key="JavaScript" value="15454" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -86,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/TimeOfInteraction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="113" column="63" lean-forward="true" selection-start-line="113" selection-start-column="63" selection-end-line="113" selection-end-column="63" />
+            <state relative-caret-position="440">
+              <caret line="57" column="106" selection-start-line="57" selection-start-column="106" selection-end-line="57" selection-end-column="106" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -283,12 +279,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563299019960</updated>
-      <workItem from="1563299021261" duration="40793000" />
+      <workItem from="1563299021261" duration="41332000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40793000" />
+    <option name="totallyTimeSpent" value="41332000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -521,8 +517,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/TimeOfInteraction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="113" column="63" lean-forward="true" selection-start-line="113" selection-start-column="63" selection-end-line="113" selection-end-column="63" />
+        <state relative-caret-position="440">
+          <caret line="57" column="106" selection-start-line="57" selection-start-column="106" selection-end-line="57" selection-end-column="106" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

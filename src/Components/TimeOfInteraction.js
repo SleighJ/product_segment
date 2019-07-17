@@ -38,7 +38,7 @@ class TimeOfInteraction extends Component {
 
 	};
 
-	toggleDatePicker = () => {
+	toggleDayPicker = () => {
 		this.setState({
 			openDayPicker: !this.state.openDayPicker,
 		})
@@ -54,6 +54,8 @@ class TimeOfInteraction extends Component {
 	};
 
 	render() {
+
+		//TODO: fix multiple day pickers on click of left hand date button (because of same ref and click function)
 
 		console.log(this.state)
 
@@ -82,9 +84,25 @@ class TimeOfInteraction extends Component {
 
 					{ selectedModifier == 'Between' ?
 
-						<Grid.Column style={{ marginLeft: '1%', marginRight: '2%', width: '15%'}} width={3}>
-							<Button style={{width: '100%'}}>Select Date</Button>
-						</Grid.Column>
+						<div>
+							<Grid.Column style={{ marginLeft: '1%', marginRight: '2%', width: '15%'}} width={3}>
+								<Button style={{width: '100%'}} onClick={ this.toggleDayPicker }>Select Date</Button>
+							</Grid.Column>
+
+							<Grid.Column width={3}>
+								<Fragment>
+									<Popup
+										context={ this.contextRef }
+										content={ <DayPicker/> }
+										position='right center'
+										open={this.state.openDayPicker}
+									/>
+									<strong ref={this.contextRef}></strong>
+								</Fragment>
+							</Grid.Column>
+
+						</div>
+
 
 					: null }
 
@@ -101,7 +119,7 @@ class TimeOfInteraction extends Component {
 					</Grid.Column>
 
 					<Grid.Column style={{ marginLeft: '1%', width: '15%'}} width={3}>
-						<Button onClick={ this.toggleDatePicker } style={{width: '100%'}}>Select Date</Button>
+						<Button onClick={ this.toggleDayPicker } style={{width: '100%'}}>Select Date</Button>
 					</Grid.Column>
 
 					<Grid.Column style={{width: '65%'}} width={3}>
