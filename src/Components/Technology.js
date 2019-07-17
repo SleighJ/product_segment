@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
-import { Grid, Segment, Dropdown, Button, Header, Icon } from 'semantic-ui-react';
+import {
+	Grid,
+	Segment,
+	Dropdown,
+	Button,
+	Header,
+	Icon
+} from 'semantic-ui-react';
+
+import '../CSS/Technology.css';
 
 class Technology extends Component {
 	constructor(props){
@@ -13,20 +22,24 @@ class Technology extends Component {
 
 	render() {
 		return (
-			<Segment style={{width: '97%', marginTop: '1%', borderRadius: '1', boxShadow: 'none', fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey'}}>
+			<Segment id={'technology-segment-master'}>
 
 				<Grid.Row style={{display: 'flex'}}>
-					<Grid.Column style={{width: '120%'}}>
-						<Header as={'h4'} align={'left'} style={{fontFamily: 'IBM Plex Sans', fontSize: '1.25rem', color: 'rgb(88, 88, 88)', margin: '2%', marginBottom: '5%',}}> Technology <span style={{color: 'lightGrey'}}> - Which device, browser or operating system are they using? </span> </Header>
+
+					<Grid.Column width={12} style={{width: '100%'}}>
+						<Header id={'header'} as={'h4'} align={'left'} style={{fontFamily: 'IBM Plex Sans'}}> Technology
+							<span style={{color: 'lightGrey'}}> - Which device, browser or operating system are they using? </span>
+						</Header>
 					</Grid.Column>
 
-					<Grid.Column style={{width: '80%'}}>
-						<Button floated={'right'} size={'tiny'} style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey'}}> <Icon name={'trash'}> </Icon> Delete </Button>
+					<Grid.Column width={4} style={{width: '100%'}}>
+						<Button floated={'right'} size={'tiny'} style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey', marginRight: '2%'}}> <Icon name={'trash'}> </Icon> Delete </Button>
 					</Grid.Column>
+
 				</Grid.Row>
 
-				<Grid.Row style={{display: 'flex'}}>
-					<Grid.Column width={5} style={{padding: '1%', width: '20%'}}>
+				<Grid.Row style={{display: 'flex', padding: '1%', marginBottom: '2%'}}>
+					<Grid.Column width={5} style={{ marginLeft: '-2.5%', width: '20%'}}>
 						<Dropdown
 							className={'dropdown'}
 							placeholder='Device'
@@ -39,7 +52,7 @@ class Technology extends Component {
 
 						/>
 					</Grid.Column>
-					<Grid.Column style={{padding: '1%', width: '15%'}} width={5}>
+					<Grid.Column style={{marginLeft: '1%', width: '15%'}} width={5}>
 						<Dropdown
 							placeholder='Uses'
 							fluid
@@ -49,9 +62,10 @@ class Technology extends Component {
 							value={ 'Uses' }
 						/>
 					</Grid.Column>
-					<Grid.Column style={{padding: '1%', width: '65%', color: 'lightGrey'}} width={6} align={'left'}>
+					<Grid.Column style={{marginLeft: '1%', width: '55%', textAlign:'left', height: '30%'}} width={6} align={'left'}>
 						<Dropdown
 							className={'dropdown'}
+							style={{fontSize: '12px'}}
 							placeholder='Operating System'
 							fluid
 							selection

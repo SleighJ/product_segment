@@ -42,7 +42,7 @@ class ProductInteraction extends Component {
 							<Button
 								floated={'left'}
 								size={'tiny'}
-								style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey', marginTop: '10%', fontSize: '12px', width: '60%'}}
+								style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey', marginTop: '10%', marginBottom: '10%', fontSize: '12px', width: '60%'}}
 								// disabled={ selectedGender && selectedAssociation && selectedGarments.length > 0 ? false : true }
 								// onClick={ ()=>this.addProductCondition() }
 							> +More </Button>

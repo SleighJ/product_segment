@@ -46,7 +46,7 @@ export default class ApplicationContainer extends Component {
 					</Segment>
 
 					{/*row 4: Technology*/}
-					<Grid.Row id={'row'}>
+					<Grid.Row id={'technology-row'}>
 						<Technology />
 					</Grid.Row>
 

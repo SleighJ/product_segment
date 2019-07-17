@@ -34,7 +34,7 @@ class TimeOfInteraction extends Component {
 						</Grid.Column>
 
 						<Grid.Column style={{width: '80%'}}>
-							<Button floated={'right'} size={'tiny'} style={{marginRight: '2%', fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey'}}> <Icon name={'time'}> </Icon>Remove this time period</Button>
+							<Button floated={'right'} size={'tiny'} style={{marginRight: '2%', marginTop: '2%', fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey'}}> <Icon name={'time'}> </Icon>Remove this time period</Button>
 						</Grid.Column>
 
 					</Grid.Row>
