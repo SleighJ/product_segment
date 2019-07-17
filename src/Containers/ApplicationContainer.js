@@ -89,7 +89,9 @@ export default class ApplicationContainer extends Component {
 						<Grid.Row width={16}>
 
 							{/*create ProductInteractionHistory*/}
-							<ProductInteractionHistory conditionHistory={ conditionHistory } />
+							<ProductInteractionHistory
+								conditionHistory={ conditionHistory }
+							/>
 
 							<ProductInteraction
 								retrieveGender={ this.retrieveGender }
@@ -102,7 +104,9 @@ export default class ApplicationContainer extends Component {
 						<Divider />
 
 						<Grid.Row width={16}>
-							<TimeOfInteraction />
+							<TimeOfInteraction
+								currentlySelectedAssociation={ currentlySelectedAssociation }
+							/>
 						</Grid.Row>
 					</Segment>
 
