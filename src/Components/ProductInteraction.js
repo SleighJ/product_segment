@@ -28,14 +28,15 @@ class ProductInteraction extends Component {
 
 		//if selectedGender does not equal the previous value of selectedGender
 		if (selectedGender != prevState.selectedGender) {
+			const initialAssociation = null;
+			const initialGarments = [];
 
 			//set selectedAssociation and SelectedGarments back to their initial values
 			this.setState({
-				selectedAssociation: null,
-				selectedGarments: [],
-			}, this.props.retrieveAssociation(null), this.props.retrieveSelectedGarments([]))
+				selectedAssociation: initialAssociation,
+				selectedGarments: initialGarments,
+			}, this.props.retrieveAssociation(initialAssociation), this.props.retrieveSelectedGarments(initialGarments))
 		}
-
 	};
 
 	selectGender = (event, data) => {
@@ -83,12 +84,13 @@ class ProductInteraction extends Component {
 			selectedGarments,
 		};
 
+		//set selectedGender to null so compWillUpdate will set selectedAssociation and selectedGarments to their initial values and communicate the change with <ApplicationContainer />
+		this.setState({
+			selectedGender: null,
+		});
+
 		this.props.retrieveCondition(conditionHistoryObj);
 	};
-
-	//TODO: needs functionality for
-	//adding a line button,
-	//packaging up data and passing it to parent
 
 	render(){
 
@@ -97,14 +99,6 @@ class ProductInteraction extends Component {
 
 		return (
 				<Grid.Row id={'product-interaction-master-row'}>
-					<Grid.Row style={{display: 'flex'}}>
-						<Grid.Column width={12} style={{width: '100%'}}>
-							<Header id={'header'} as={'h4'} align={'left'} style={{fontFamily: 'IBM Plex Sans'}}>Product interactions
-								<span style={{color: 'lightGrey'}}> - What products have they interacted with? </span>
-							</Header>
-						</Grid.Column>
-					</Grid.Row>
-
 					<Grid.Row id={'dropdown-row'} style={{display: 'flex', paddingTop: '1%'}}>
 						<Grid.Column style={{ marginLeft: '-2%', width: '20%'}} width={3}>
 							<Dropdown

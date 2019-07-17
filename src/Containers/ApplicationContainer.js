@@ -6,6 +6,7 @@ import ProductInteraction from '../Components/ProductInteraction';
 import TimeOfInteraction from '../Components/TimeOfInteraction';
 import Technology from '../Components/Technology';
 import NewCondition from '../Components/NewCondition';
+import ProductInteractionHistory from '../Components/ProductInteractionHistory';
 
 import {
 	Grid,
@@ -83,9 +84,13 @@ export default class ApplicationContainer extends Component {
 						</Grid.Column>
 					</Grid.Row>
 
-					{/*row 2: Product Interaction and Product History*/}
+					{/*row 2: Product Interaction*/}
 					<Segment id={'interaction-history-segment'}>
 						<Grid.Row width={16}>
+
+							{/*create ProductInteractionHistory*/}
+							<ProductInteractionHistory conditionHistory={ conditionHistory } />
+
 							<ProductInteraction
 								retrieveGender={ this.retrieveGender }
 								retrieveAssociation={ this.retrieveAssociation }
