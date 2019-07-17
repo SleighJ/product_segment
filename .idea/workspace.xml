@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08933b8c-6e0e-497a-b47d-bf91cc200fc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/CSS/NewCondition.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JSON/JSON.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CSS/ApplicationContainer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/CSS/ApplicationContainer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NewCondition.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NewCondition.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ProductInteraction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ProductInteraction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SegmentSize.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SegmentSize.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Containers/ApplicationContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/ApplicationContainer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,28 +24,28 @@
         <counts>
           <entry key="css" value="21" />
           <entry key="html" value="2" />
-          <entry key="js" value="47" />
+          <entry key="js" value="49" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="21" />
           <entry key="HTML" value="2" />
-          <entry key="JavaScript" value="47" />
+          <entry key="JavaScript" value="49" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="3097" />
           <entry key="html" value="2" />
-          <entry key="js" value="6033" />
+          <entry key="js" value="11994" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="3097" />
           <entry key="HTML" value="2" />
-          <entry key="JavaScript" value="6033" />
+          <entry key="JavaScript" value="11994" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -61,11 +57,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Containers/ApplicationContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="536">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/ProductInteraction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="117" column="88" selection-start-line="117" selection-start-column="88" selection-end-line="117" selection-end-column="88" />
+            <state relative-caret-position="495">
+              <caret line="165" column="58" lean-forward="true" selection-start-line="165" selection-start-column="58" selection-end-line="165" selection-end-column="58" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/SegmentSize.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="37" column="57" selection-start-line="37" selection-start-column="57" selection-end-line="37" selection-end-column="57" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -93,6 +113,7 @@
       <find>width: 100% !important;</find>
       <find>import '../CSS/Prod</find>
       <find>technology-row</find>
+      <find>console.log</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -107,7 +128,6 @@
         <option value="$PROJECT_DIR$/src/Containers/ApplicationHeader.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/Components/SegmentSize.js" />
         <option value="$PROJECT_DIR$/src/Components/DefineSegment.js" />
         <option value="$PROJECT_DIR$/src/CSS/DefineSegment.css" />
         <option value="$PROJECT_DIR$/src/CSS/SegmentSize.css" />
@@ -120,10 +140,11 @@
         <option value="$PROJECT_DIR$/src/Components/Technology.js" />
         <option value="$PROJECT_DIR$/src/CSS/Technology.css" />
         <option value="$PROJECT_DIR$/src/Components/NewCondition.js" />
-        <option value="$PROJECT_DIR$/src/Containers/ApplicationContainer.js" />
         <option value="$PROJECT_DIR$/src/CSS/ApplicationContainer.css" />
         <option value="$PROJECT_DIR$/src/CSS/NewCondition.css" />
         <option value="$PROJECT_DIR$/src/JSON/JSON.js" />
+        <option value="$PROJECT_DIR$/src/Containers/ApplicationContainer.js" />
+        <option value="$PROJECT_DIR$/src/Components/SegmentSize.js" />
         <option value="$PROJECT_DIR$/src/Components/ProductInteraction.js" />
       </list>
     </option>
@@ -229,12 +250,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563299019960</updated>
-      <workItem from="1563299021261" duration="26395000" />
+      <workItem from="1563299021261" duration="33225000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26395000" />
+    <option name="totallyTimeSpent" value="33225000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -360,16 +381,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/SegmentSize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="89" lean-forward="true" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="89" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CSS/Technology.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -431,16 +442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Containers/ApplicationContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CSS/ApplicationContainer.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -455,10 +456,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/ApplicationContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/SegmentSize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="37" column="57" selection-start-line="37" selection-start-column="57" selection-end-line="37" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/ProductInteraction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="117" column="88" selection-start-line="117" selection-start-column="88" selection-end-line="117" selection-end-column="88" />
+        <state relative-caret-position="495">
+          <caret line="165" column="58" lean-forward="true" selection-start-line="165" selection-start-column="58" selection-end-line="165" selection-end-column="58" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

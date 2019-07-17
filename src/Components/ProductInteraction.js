@@ -22,13 +22,29 @@ class ProductInteraction extends Component {
 		}
 	}
 
+	componentWillUpdate = (prevProps, prevState) => {
+		//use state to avoid confusion with <SegmentSize /> using props
+		const { selectedGender, selectedAssociation, selectedGarments } = this.state;
+
+		//if selectedGender does not equal the previous value of selectedGender
+		if (selectedGender != prevState.selectedGender) {
+
+			//set selectedAssociation and SelectedGarments back to their initial values
+			this.setState({
+				selectedAssociation: null,
+				selectedGarments: [],
+			}, this.props.retrieveAssociation(null), this.props.retrieveSelectedGarments([]))
+		}
+
+	};
+
 	selectGender = (event, data) => {
 		const {  value } = data;
 		const selectedGender = value;
 
 		this.setState({
 			selectedGender,
-		})
+		}, this.props.retrieveGender(selectedGender))
 	};
 
 	selectAssociation = (event, data) => {
@@ -37,7 +53,7 @@ class ProductInteraction extends Component {
 
 		this.setState({
 			selectedAssociation,
-		})
+		}, this.props.retrieveAssociation(selectedAssociation))
 	};
 
 	selectGarments = (event, data) => {
@@ -46,25 +62,38 @@ class ProductInteraction extends Component {
 
 		this.setState({
 			selectedGarments,
-		})
+		}, this.props.retrieveSelectedGarments(selectedGarments))
 	};
 
-	removeCurrentSelections = () => {
+
+	removeCurrentSelections = (event, data) => {
 		this.setState({
 			selectedGender: null,
 			selectedAssociation: null,
 			selectedGarments: [],
 		})
 	};
+	//this saves input values and passes them to the <ApplicationContainer /> to enter into history
+	addProductCondition = () => {
+		const { selectedGender, selectedAssociation, selectedGarments } = this.state;
 
+		const conditionHistoryObj = {
+			selectedGender,
+			selectedAssociation,
+			selectedGarments,
+		};
 
+		this.props.retrieveCondition(conditionHistoryObj);
+	};
+
+	//TODO: needs functionality for
+	//adding a line button,
+	//packaging up data and passing it to parent
 
 	render(){
 
 		const { genderArray, associationArray, clothingArr } = JSON;
 		const { selectedGender, selectedAssociation, selectedGarments } = this.state;
-
-		console.log(this.state)
 
 		return (
 				<Grid.Row id={'product-interaction-master-row'}>
@@ -98,7 +127,7 @@ class ProductInteraction extends Component {
 								size={'tiny'}
 								style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey', marginTop: '10%', marginBottom: '10%', fontSize: '12px', width: '60%'}}
 								disabled={ selectedGender && selectedAssociation && selectedGarments.length > 0 ? false : true }
-								// onClick={ ()=>this.addProductCondition() }
+								onClick={ this.addProductCondition }
 							> +More </Button>
 
 						</Grid.Column>
@@ -134,6 +163,7 @@ class ProductInteraction extends Component {
 									text: garment,
 									value: garment,
 								})) }
+								value={ selectedGarments }
 							/>
 						</Grid.Column>
 						<Grid.Column align={'center'} style={{marginLeft: '1%', marginRight: '1%', width: '10%'}} width={3}>
