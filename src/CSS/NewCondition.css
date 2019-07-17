@@ -1,0 +1,19 @@
+#new-condition-master-segment {
+    margin: unset;
+    padding: unset;
+}
+
+#new-condition-master-segment {
+    width: 100%;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 2%;
+    margin-right: 1%;
+}
+
+#new-condition-master-segment #header {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 8%;
+    color: rgb(88, 88, 88);
+}

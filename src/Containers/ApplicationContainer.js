@@ -51,7 +51,7 @@ export default class ApplicationContainer extends Component {
 					</Grid.Row>
 
 					{/*row 5: new Condition*/}
-					<Grid.Row id={'row'}>
+					<Grid.Row id={'new-condition-row'}>
 						<NewCondition />
 					</Grid.Row>
 

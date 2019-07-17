@@ -8,16 +8,18 @@ import {
 	Header,
 } from 'semantic-ui-react';
 
+import '../CSS/NewCondition.css';
+
 
 class NewCondition extends Component {
 	render(){
 		return (
-			<Segment style={{width: '97%', marginTop: '1%', borderRadius: '1', marginBottom: '3%', boxShadow: 'none', fontFamily: 'IBM Plex Sans', color: 'rgb(68, 68, 68)', border: '1.5px solid lightGrey'}}>
+			<Segment id={'new-condition-master-segment'}>
 
 				<Grid.Row style={{display: 'flex', alignItems: 'center', color: 'rgb(68, 68, 68)', margin: '2%'}}>
 
 					<Grid.Column width={4}>
-						<Header as={'h4'} align={'left'} style={{fontFamily: 'IBM Plex Sans', fontSize: '1.25rem', color: 'rgb(88, 88, 88)'}}>Frequency</Header>
+						<Header id={'header'} as={'h4'} align={'left'} style={{fontFamily: 'IBM Plex Sans', color: 'rgb(88, 88, 88)'}}>Frequency</Header>
 					</Grid.Column>
 
 					<Grid.Column width={3} style={{paddingLeft: '8.5%', width: '40%'}}>

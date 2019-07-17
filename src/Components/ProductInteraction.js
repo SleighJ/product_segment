@@ -1,20 +1,71 @@
 import React, { Component } from 'react';
 
-import { Grid, Dropdown, Button, Icon, Header, Segment } from 'semantic-ui-react';
-
+import JSON from '../JSON/JSON';
 import '../CSS/ProductInteraction.css';
 
+import {
+	Grid,
+	Dropdown,
+	Button,
+	Icon,
+	Header,
+} from 'semantic-ui-react';
 
 class ProductInteraction extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-
+			selectedGender: null,
+			selectedAssociation: null,
+			selectedGarments: [],
 		}
 	}
 
+	selectGender = (event, data) => {
+		const {  value } = data;
+		const selectedGender = value;
+
+		this.setState({
+			selectedGender,
+		})
+	};
+
+	selectAssociation = (event, data) => {
+		const { value } = data;
+		const selectedAssociation = value;
+
+		this.setState({
+			selectedAssociation,
+		})
+	};
+
+	selectGarments = (event, data) => {
+		const { value } = data;
+		const selectedGarments = value;
+
+		this.setState({
+			selectedGarments,
+		})
+	};
+
+	removeCurrentSelections = () => {
+		this.setState({
+			selectedGender: null,
+			selectedAssociation: null,
+			selectedGarments: [],
+		})
+	};
+
+
+
 	render(){
+
+		const { genderArray, associationArray, clothingArr } = JSON;
+		const { selectedGender, selectedAssociation, selectedGarments } = this.state;
+
+		console.log(this.state)
+
 		return (
 				<Grid.Row id={'product-interaction-master-row'}>
 					<Grid.Row style={{display: 'flex'}}>
@@ -28,61 +79,67 @@ class ProductInteraction extends Component {
 					<Grid.Row id={'dropdown-row'} style={{display: 'flex', paddingTop: '1%'}}>
 						<Grid.Column style={{ marginLeft: '-2%', width: '20%'}} width={3}>
 							<Dropdown
-								id={'asdf'}
 								className={'dropdown'}
-								placeholder='Market'
+								placeholder='Gender'
 								fluid
 								selection
 								style={{ border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', width: '100%', fontSize: '12px' }}
-								// options={ genderArray }
-								// value={ selectedGender ? selectedGender.text : null }
-								// onChange={ this.selectGender }
+								options={ genderArray.map((gender, i) => ({
+									key: gender.key,
+									text: gender.text,
+									value: gender.value,
+								})) }
+								value={ selectedGender ? selectedGender : null }
+								onChange={ this.selectGender }
 							/>
 
 							<Button
 								floated={'left'}
 								size={'tiny'}
 								style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey', marginTop: '10%', marginBottom: '10%', fontSize: '12px', width: '60%'}}
-								// disabled={ selectedGender && selectedAssociation && selectedGarments.length > 0 ? false : true }
+								disabled={ selectedGender && selectedAssociation && selectedGarments.length > 0 ? false : true }
 								// onClick={ ()=>this.addProductCondition() }
 							> +More </Button>
 
 						</Grid.Column>
 						<Grid.Column style={{marginLeft: '1%', width: '15%'}} width={3}>
 							<Dropdown
-								id={'asdf-1'}
 								className={'dropdown'}
 								placeholder='Association'
 								fluid
 								selection
 								style={{ border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', width: '100%', fontSize: '12px', maxHeight: '40%', display: 'flex' }}
-								// disabled={ genderGarments ? false : true }
-								// options={ associationArray }
-								// onChange={ this.selectAssociation }
+								disabled={ selectedGender ? false : true }
+								options={ associationArray.map((association, i) => ({
+									key: association.key,
+									text: association.text,
+									value: association.value,
+								})) }
+								value={ selectedAssociation ? selectedAssociation : null }
+								onChange={ this.selectAssociation }
 							/>
 						</Grid.Column>
 
 						<Grid.Column style={{marginLeft: '1%', width: '55%', textAlign:'left'}} width={3}>
 							<Dropdown
-								id={'asdf-2'}
 								placeholder={'Select Item'}
 								style={{ fontSize: '12px', width: '100%' }}
 								multiple
 								selection
-								// options={ genderGarments }
-								// onChange={ this.selectGarments }
-								// content={ selectedGarments.map((garment, i) => ({
-								// 	key: i,
-								// 	text: garment,
-								// 	value: garment,
-								// })) }
-								// value={ selectedGarments }
+								disabled={ selectedGender ? false : true }
+								options={ clothingArr.filter(garment => garment.demographic.indexOf(selectedGender) != -1) }
+								onChange={ this.selectGarments }
+								content={ selectedGarments.map((garment, i) => ({
+									key: i,
+									text: garment,
+									value: garment,
+								})) }
 							/>
 						</Grid.Column>
 						<Grid.Column align={'center'} style={{marginLeft: '1%', marginRight: '1%', width: '10%'}} width={3}>
 							<Button
 								align={'center'}
-								// onClick={ this.deleteCurrentProduction }
+								onClick={ this.removeCurrentSelections }
 								floated={'right'} size={'tiny'}
 								style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey', fontSize: '12px', width: '100%'}}
 							>
