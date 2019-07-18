@@ -111,10 +111,10 @@ class TimeOfInteraction extends Component {
 			toggleEndDayPicker: false,
 			selectedModifier: null,
 		},
-			this.props.retrieveSelectedModifier(null),
-			this.props.retrieveDate(null),
-			this.props.retrieveStartDate(null),
-			this.props.retrieveEndDate(null)
+		this.props.retrieveSelectedModifier(null),
+		this.props.retrieveDate(null),
+		this.props.retrieveStartDate(null),
+		this.props.retrieveEndDate(null)
 		)
 	};
 

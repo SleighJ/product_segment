@@ -29,7 +29,7 @@ class Technology extends Component {
 
 		this.setState({
 			selectedDevice,
-		})
+		}, this.props.retrieveSelectedDevice(selectedDevice))
 	};
 
 	selectDeviceModifier = (event, data) => {
@@ -47,7 +47,7 @@ class Technology extends Component {
 
 		this.setState({
 			selectedOperatingSystem,
-		})
+		}, this.props.retrieveOperatingSystem(selectedOperatingSystem))
 	};
 
 	deleteTechnology = () => {
@@ -55,7 +55,9 @@ class Technology extends Component {
 			selectedDevice: null,
 			selectedDeviceModifier: null,
 			selectedOperatingSystem: null,
-		})
+		},
+		this.props.retrieveSelectedDevice(null),
+		this.props.retrieveOperatingSystem(null))
 	};
 
 	render() {

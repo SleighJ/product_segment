@@ -28,6 +28,12 @@ export default class ApplicationContainer extends Component {
 			conditionHistory: [],
 			//time of interaction
 			selectedModifier: null,
+			selectedDay: null,
+			selectedStartDay: null,
+			selectedEndDay: null,
+			//technology
+			selectedDevice: null,
+			selectedOperatingSystem: null,
 		}
 	}
 
@@ -91,6 +97,20 @@ export default class ApplicationContainer extends Component {
 		})
 	};
 
+	// Technology
+
+	retrieveSelectedDevice = (selectedDevice) => {
+		this.setState({
+			selectedDevice,
+		})
+	};
+
+	retrieveOperatingSystem = (selectedOperatingSystem) => {
+		this.setState({
+			selectedOperatingSystem,
+		})
+	};
+
 	render() {
 		const { conditionHistory, currentlySelectedGender, currentlySelectedAssociation, currentlySelectedGarments } = this.state;
 
@@ -147,7 +167,10 @@ export default class ApplicationContainer extends Component {
 
 					{/*row 4: Technology*/}
 					<Grid.Row id={'technology-row'}>
-						<Technology />
+						<Technology
+							retrieveSelectedDevice={ this.retrieveSelectedDevice }
+							retrieveOperatingSystem={ this.retrieveOperatingSystem }
+						/>
 					</Grid.Row>
 
 					{/*row 5: new Condition*/}
