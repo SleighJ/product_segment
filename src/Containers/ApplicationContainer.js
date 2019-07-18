@@ -21,6 +21,8 @@ export default class ApplicationContainer extends Component {
 	constructor(props) {
 		super(props);
 
+		this.modalContent = React.createRef();
+
 		this.state = {
 			//product interaction
 			currentlySelectedGender: null,
@@ -119,6 +121,12 @@ export default class ApplicationContainer extends Component {
 		// })
 	};
 
+	copyJSON = () => {
+		const currentData = this.modalContent.current;
+
+		console.log(currentData)
+	};
+
 	render() {
 		const {
 			currentlySelectedGender,
@@ -136,10 +144,7 @@ export default class ApplicationContainer extends Component {
 		console.log(this.state)
 
 		return (
-			<div>
 				<Grid>
-
-					{/*row 1: define segment and segment size*/}
 					<Grid.Row id={'row'} columns={2}>
 						<Grid.Column id={'define-segment'} width={6}>
 							<DefineSegment />
@@ -155,11 +160,9 @@ export default class ApplicationContainer extends Component {
 						</Grid.Column>
 					</Grid.Row>
 
-					{/*row 2: Product Interaction*/}
 					<Segment id={'interaction-history-segment'}>
 						<Grid.Row width={16}>
 
-							{/*create ProductInteractionHistory*/}
 							<ProductInteractionHistory
 								conditionHistory={ conditionHistory }
 							/>
@@ -184,7 +187,6 @@ export default class ApplicationContainer extends Component {
 						</Grid.Row>
 					</Segment>
 
-					{/*row 4: Technology*/}
 					<Grid.Row id={'technology-row'}>
 						<Technology
 							retrieveSelectedDevice={ this.retrieveSelectedDevice }
@@ -192,60 +194,46 @@ export default class ApplicationContainer extends Component {
 						/>
 					</Grid.Row>
 
-					{/*row 5: new Condition*/}
 					<Grid.Row id={'new-condition-row'}>
 						<NewCondition />
 						<Grid.Column width={6}></Grid.Column>
 						<Grid.Column width={6}></Grid.Column>
 						<Grid.Column width={4} style={{paddingLeft: '5%', textAlign: 'right', fontSize: '12px', marginTop: '-1%', paddingBottom: '3%'}}>
-							<Modal
-								trigger={<a onClick={ this.printSourceCode }>Show source code</a>}
-							>
+							<Modal ref={ this.modalContent } trigger={ <a onClick={ this.printSourceCode }>Show source code</a> }>
 								<Modal.Content>
-									{
+								<ul>
+									<li>Product Interactions
 										<ul>
-											<li>Product Interactions
-												<ul>
-													<li>currentlySelectedGender: {JSON.stringify(currentlySelectedGender)}</li>
-													<li>currentlySelectedAssociation: {JSON.stringify(currentlySelectedAssociation)}</li>
-													<li>currentlySelectedGarments: {JSON.stringify(currentlySelectedGarments)}</li>
-													<ul>
-														<li>pastProductConditions:</li>
-														<ul>{conditionHistory.map((entry, i) => {
-															return(
-																<li key={i}>{JSON.stringify(entry)}</li>
-															)
-														})}</ul>
-
-													</ul>
-												</ul>
-												<li>Time of Interaction
-													<ul>
-														<li>dateModifier: {JSON.stringify(selectedModifier)}</li>
-														<li>selectedDay: {JSON.stringify(selectedDay)}</li>
-														<li>selectedStartDay: {JSON.stringify(selectedStartDay)}</li>
-														<li>selectedEndDay: {JSON.stringify(selectedEndDay)}</li>
-													</ul>
-												</li>
-
-												<li> Technology Used
-													<ul>
-														<li>selectedDevice: {JSON.stringify(selectedDevice)}</li>
-														<li>selectedOperatingSystem: {JSON.stringify(selectedOperatingSystem)}</li>
-													</ul>
-												</li>
-											</li>
+											<li>currentlySelectedGender: {JSON.stringify(currentlySelectedGender)}</li>
+											<li>currentlySelectedAssociation: {JSON.stringify(currentlySelectedAssociation)}</li>
+											<li>currentlySelectedGarments: {JSON.stringify(currentlySelectedGarments)}</li>
+											<ul>
+												<li>pastProductConditions:</li>
+												<ul>{ conditionHistory.map((entry, i) => { return <li key={i}>{JSON.stringify(entry)}</li> })}</ul>
+											</ul>
 										</ul>
-									}
+										<li>Time of Interaction
+											<ul>
+												<li>dateModifier: {JSON.stringify(selectedModifier)}</li>
+												<li>selectedDay: {JSON.stringify(selectedDay)}</li>
+												<li>selectedStartDay: {JSON.stringify(selectedStartDay)}</li>
+												<li>selectedEndDay: {JSON.stringify(selectedEndDay)}</li>
+											</ul>
+										</li>
+										<li> Technology Used
+											<ul>
+												<li>selectedDevice: {JSON.stringify(selectedDevice)}</li>
+												<li>selectedOperatingSystem: {JSON.stringify(selectedOperatingSystem)}</li>
+											</ul>
+										</li>
+									</li>
+								</ul>
+									<a onClick={ this.copyJSON } style={{marginLeft: '95%'}}>Copy</a>
 								</Modal.Content>
 							</Modal>
-
 						</Grid.Column>
 					</Grid.Row>
-
-
 				</Grid>
-			</div>
 		);
 	}
 }
