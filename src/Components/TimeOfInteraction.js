@@ -36,14 +36,7 @@ class TimeOfInteraction extends Component {
 	}
 
 	componentDidUpdate = (prevProps, prevState) => {
-		const { currentlySelectedAssociation } = this.props;
 		const { selectedModifier, selectedStartDay } = this.state;
-
-		if (currentlySelectedAssociation != prevProps.currentlySelectedAssociation) {
-			this.setState({
-				currentlySelectedAssociation,
-			})
-		}
 
 		if (prevState.selectedModifier != selectedModifier) {
 			if (prevState.selectedModifier) {
@@ -62,7 +55,7 @@ class TimeOfInteraction extends Component {
 
 		this.setState({
 			selectedModifier,
-		})
+		}, this.props.retrieveSelectedModifier(selectedModifier))
 	};
 
 	toggleDayPicker = () => {
@@ -88,7 +81,7 @@ class TimeOfInteraction extends Component {
 
 		this.setState({
 			formattedSelectedDay,
-		}, this.toggleDayPicker())
+		}, this.toggleDayPicker(), this.props.retrieveDate(formattedSelectedDay))
 	};
 
 	selectStartDate = (selectedDay) => {
@@ -97,7 +90,7 @@ class TimeOfInteraction extends Component {
 		this.setState({
 			selectedStartDay,
 			betweenModifier: selectedDay,
-		}, this.toggleStartDayPicker())
+		}, this.toggleStartDayPicker(), this.props.retrieveStartDate(selectedStartDay))
 	};
 
 	selectEndDate = (selectedDay) => {
@@ -105,7 +98,7 @@ class TimeOfInteraction extends Component {
 
 		this.setState({
 			selectedEndDay,
-		}, this.toggleEndDayPicker())
+		}, this.toggleEndDayPicker(), this.props.retrieveEndDate(selectedEndDay))
 	};
 
 	removeTimePeriod = () => {
@@ -117,7 +110,12 @@ class TimeOfInteraction extends Component {
 			toggleStartDayPicker: false,
 			toggleEndDayPicker: false,
 			selectedModifier: null,
-		})
+		},
+			this.props.retrieveSelectedModifier(null),
+			this.props.retrieveDate(null),
+			this.props.retrieveStartDate(null),
+			this.props.retrieveEndDate(null)
+		)
 	};
 
 	render() {

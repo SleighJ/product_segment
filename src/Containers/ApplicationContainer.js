@@ -26,8 +26,12 @@ export default class ApplicationContainer extends Component {
 			currentlySelectedAssociation: null,
 			currentlySelectedGarments: [],
 			conditionHistory: [],
+			//time of interaction
+			selectedModifier: null,
 		}
 	}
+
+	// Product Interaction
 
 	//retrieves active gender value from <ProductInteraction /> and passes it to <SegmentSize /> in real time
 	retrieveGender = (gender) => {
@@ -61,8 +65,36 @@ export default class ApplicationContainer extends Component {
 		})
 	};
 
+	// Time
+
+	retrieveSelectedModifier = (selectedModifier) => {
+		this.setState({
+			selectedModifier,
+		})
+	};
+
+	retrieveDate = (selectedDay) => {
+		this.setState({
+			selectedDay,
+		})
+	};
+
+	retrieveStartDate = (selectedStartDay) => {
+		this.setState({
+			selectedStartDay,
+		})
+	};
+
+	retrieveEndDate = (selectedEndDay) => {
+		this.setState({
+			selectedEndDay,
+		})
+	};
+
 	render() {
 		const { conditionHistory, currentlySelectedGender, currentlySelectedAssociation, currentlySelectedGarments } = this.state;
+
+		console.log(this.state)
 
 		return (
 			<div>
@@ -105,7 +137,10 @@ export default class ApplicationContainer extends Component {
 
 						<Grid.Row width={16}>
 							<TimeOfInteraction
-								currentlySelectedAssociation={ currentlySelectedAssociation }
+								retrieveSelectedModifier={ this.retrieveSelectedModifier }
+								retrieveDate={ this.retrieveDate }
+								retrieveStartDate={ this.retrieveStartDate }
+								retrieveEndDate={ this.retrieveEndDate }
 							/>
 						</Grid.Row>
 					</Segment>
