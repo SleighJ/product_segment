@@ -31,12 +31,13 @@ class TimeOfInteraction extends Component {
 			formattedSelectedDay: null,
 			selectedStartDay: null,
 			selectedEndDay: null,
+			betweenModifier: null,
 		}
 	}
 
 	componentDidUpdate = (prevProps, prevState) => {
 		const { currentlySelectedAssociation } = this.props;
-		const { selectedModifier } = this.state;
+		const { selectedModifier, selectedStartDay } = this.state;
 
 		if (currentlySelectedAssociation != prevProps.currentlySelectedAssociation) {
 			this.setState({
@@ -95,6 +96,7 @@ class TimeOfInteraction extends Component {
 
 		this.setState({
 			selectedStartDay,
+			betweenModifier: selectedDay,
 		}, this.toggleStartDayPicker())
 	};
 
@@ -120,9 +122,7 @@ class TimeOfInteraction extends Component {
 
 	render() {
 		const { onAroundAndBefore } = JSON;
-		const { selectedModifier, formattedSelectedDay, selectedStartDay, selectedEndDay } = this.state;
-
-		console.log(this.state)
+		const { selectedModifier, formattedSelectedDay, selectedStartDay, selectedEndDay, betweenModifier } = this.state;
 
 		return (
 			<Grid.Row id={'time-of-interaction-master-row'}>
@@ -137,12 +137,9 @@ class TimeOfInteraction extends Component {
 					</Grid.Column>
 				</Grid.Row>
 
-
 				{ selectedModifier == 'Between' ?
 
-
 					<Grid.Row style={{display: 'flex', padding: '1%'}}>
-						{console.log('1')}
 						<Grid.Column style={{marginRight: '2%', width: '25%'}} width={3}>
 							<Button style={{width: '100%'}} onClick={ this.toggleStartDayPicker }>{ selectedStartDay ? selectedStartDay : 'Select Start' }</Button>
 						</Grid.Column>
@@ -154,6 +151,7 @@ class TimeOfInteraction extends Component {
 										<DayPicker
 											onDayClick={ this.selectStartDate }
 											selectedDays={ selectedStartDay }
+											disabledDays={ betweenModifier ? betweenModifier.before : null }
 										/>
 									}
 									position='right center'
@@ -170,12 +168,12 @@ class TimeOfInteraction extends Component {
 								style={{border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', fontSize: '12px', width: '100%'}}
 								options={ onAroundAndBefore }
 								onChange={ this.selectModifier }
-								// text={ timeModifier ? timeModifier : 'On' }
+								value={ 'Between' }
 							/>
 						</Grid.Column>
 
 						<Grid.Column style={{ marginLeft: '1%', width: '25%'}} width={3}>
-							<Button onClick={ this.toggleEndDayPicker } style={{width: '100%'}}>{ selectedEndDay ? selectedEndDay : 'Select End' }</Button>
+							<Button disabled={ selectedStartDay ? false : true } onClick={ this.toggleEndDayPicker } style={{width: '100%'}}>{ selectedEndDay ? selectedEndDay : 'Select End' }</Button>
 						</Grid.Column>
 
 						<Grid.Column style={{width: '65%'}} width={3}>
@@ -187,6 +185,7 @@ class TimeOfInteraction extends Component {
 										<DayPicker
 											onDayClick={ this.selectEndDate }
 											selectedDays={ selectedEndDay }
+											disabledDays={{ before: betweenModifier }}
 										/>
 									}
 									position='right center'
@@ -198,7 +197,6 @@ class TimeOfInteraction extends Component {
 					</Grid.Row>
 					:
 					<Grid.Row style={{ display: 'flex' }}>
-						{console.log('2')}
 						<Grid.Column style={{ marginLeft: '-1%', width: '20%'}} width={3}>
 							<Dropdown
 								placeholder='Select'
@@ -212,7 +210,7 @@ class TimeOfInteraction extends Component {
 						</Grid.Column>
 
 						<Grid.Column style={{ marginLeft: '1%', width: '15%'}} width={3}>
-							<Button onClick={ this.toggleDayPicker } style={{width: '100%'}}>{ formattedSelectedDay ? formattedSelectedDay : 'Select Date' }</Button>
+							<Button disabled={ selectedModifier ? false : true } onClick={ this.toggleDayPicker } style={{width: '100%'}}>{ formattedSelectedDay ? formattedSelectedDay : 'Select Date' }</Button>
 						</Grid.Column>
 
 						<Grid.Column style={{width: '65%'}} width={3}>
@@ -220,7 +218,9 @@ class TimeOfInteraction extends Component {
 								<Popup
 									style={{ marginTop: '3%' }}
 									context={ this.oneDate }
-									content={ <DayPicker onDayClick={ this.selectOneDate } /> }
+									content={ <DayPicker
+										onDayClick={ this.selectOneDate }
+									/> }
 									position='right center'
 									open={ this.state.openDayPicker }
 								/>
