@@ -67,17 +67,14 @@ class Technology extends Component {
 			<Segment id={'technology-segment-master'}>
 
 				<Grid.Row style={{display: 'flex'}}>
-
 					<Grid.Column width={12} style={{width: '100%'}}>
 						<Header id={'header'} as={'h4'} align={'left'} style={{fontFamily: 'IBM Plex Sans'}}> Technology
 							<span style={{color: 'lightGrey'}}> - Which device, browser or operating system are they using? </span>
 						</Header>
 					</Grid.Column>
-
 					<Grid.Column width={4} style={{width: '100%'}}>
 						<Button onClick={ this.deleteTechnology } floated={'right'} size={'tiny'} style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey', marginRight: '2%'}}> <Icon name={'trash'}> </Icon> Delete </Button>
 					</Grid.Column>
-
 				</Grid.Row>
 
 				<Grid.Row style={{display: 'flex', padding: '1%', marginBottom: '2%'}}>

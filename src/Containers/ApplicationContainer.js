@@ -118,7 +118,13 @@ export default class ApplicationContainer extends Component {
 					{/*row 5: new Condition*/}
 					<Grid.Row id={'new-condition-row'}>
 						<NewCondition />
+						<Grid.Column width={6}></Grid.Column>
+						<Grid.Column width={6}></Grid.Column>
+						<Grid.Column width={4} style={{paddingLeft: '5%', textAlign: 'right', fontSize: '12px'}}>
+							<a>Show source code</a>
+						</Grid.Column>
 					</Grid.Row>
+
 
 				</Grid>
 			</div>
