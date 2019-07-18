@@ -18,10 +18,14 @@ class TimeOfInteraction extends Component {
 	constructor(props){
 		super(props);
 
-		this.contextRef = React.createRef();
+		this.oneDate = React.createRef();
+		this.startDate = React.createRef();
+		this.endDate = React.createRef();
 
 		this.state = {
 			openDayPicker: false,
+			startDayPicker: false,
+			endDayPicker: false,
 			selectedModifier: null,
 		}
 	}
@@ -53,6 +57,18 @@ class TimeOfInteraction extends Component {
 		})
 	};
 
+	toggleStartDayPicker = () => {
+		this.setState({
+			startDayPicker: !this.state.startDayPicker,
+		})
+	};
+
+	toggleEndDayPicker = () => {
+		this.setState({
+			endDayPicker: !this.state.endDayPicker,
+		})
+	};
+
 	render() {
 
 		//TODO: fix multiple day pickers on click of left hand date button (because of same ref and click function)
@@ -76,66 +92,88 @@ class TimeOfInteraction extends Component {
 				</Grid.Row>
 
 
+				{ selectedModifier == 'Between' ?
 
 
-
-
-				<Grid.Row style={{display: 'flex', padding: '1%'}}>
-
-					{ selectedModifier == 'Between' ?
-
-						<div>
-							<Grid.Column style={{ marginLeft: '1%', marginRight: '2%', width: '15%'}} width={3}>
-								<Button style={{width: '100%'}} onClick={ this.toggleDayPicker }>Select Date</Button>
-							</Grid.Column>
-
-							<Grid.Column width={3}>
-								<Fragment>
-									<Popup
-										context={ this.contextRef }
-										content={ <DayPicker/> }
-										position='right center'
-										open={this.state.openDayPicker}
-									/>
-									<strong ref={this.contextRef}></strong>
-								</Fragment>
-							</Grid.Column>
-
-						</div>
-
-
-					: null }
-
-					<Grid.Column style={{ marginLeft: '-1%', width: '20%'}} width={3}>
-						<Dropdown
-							placeholder='On'
-							fluid
-							selection
-							style={{border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', fontSize: '12px', width: '100%'}}
-							options={ onAroundAndBefore }
-							onChange={ this.selectModifier }
-							// text={ timeModifier ? timeModifier : 'On' }
-						/>
-					</Grid.Column>
-
-					<Grid.Column style={{ marginLeft: '1%', width: '15%'}} width={3}>
-						<Button onClick={ this.toggleDayPicker } style={{width: '100%'}}>Select Date</Button>
-					</Grid.Column>
-
-					<Grid.Column style={{width: '65%'}} width={3}>
-						<Fragment>
-							<Popup
-								style={{marginTop: '3%'}}
-								context={ this.contextRef }
-								content={ <DayPicker/> }
-								position='right center'
-								open={this.state.openDayPicker}
+					<Grid.Row style={{display: 'flex', padding: '1%'}}>
+						{console.log('1')}
+						<Grid.Column style={{marginRight: '2%', width: '25%'}} width={3}>
+							<Button style={{width: '100%'}} onClick={ this.toggleStartDayPicker }>Select Date</Button>
+						</Grid.Column>
+						<Grid.Column width={5}>
+							<Fragment>
+								<Popup
+									context={ this.startDate }
+									content={ <DayPicker/> }
+									position='right center'
+									open={ this.state.startDayPicker }
+								/>
+								<strong ref={this.startDate}></strong>
+							</Fragment>
+						</Grid.Column>
+						<Grid.Column style={{ marginLeft: '-1%', width: '25%'}} width={3}>
+							<Dropdown
+								placeholder='On'
+								fluid
+								selection
+								style={{border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', fontSize: '12px', width: '100%'}}
+								options={ onAroundAndBefore }
+								onChange={ this.selectModifier }
+								// text={ timeModifier ? timeModifier : 'On' }
 							/>
-							<strong ref={this.contextRef}></strong>
-						</Fragment>
-					</Grid.Column>
+						</Grid.Column>
+
+						<Grid.Column style={{ marginLeft: '1%', width: '25%'}} width={3}>
+							<Button onClick={ this.toggleEndDayPicker } style={{width: '100%'}}>Select Date</Button>
+						</Grid.Column>
+
+						<Grid.Column style={{width: '65%'}} width={3}>
+							<Fragment>
+								<Popup
+									style={{ marginTop: '3%' }}
+									context={ this.endDate }
+									content={ <DayPicker/> }
+									position='right center'
+									open={ this.state.endDayPicker }
+								/>
+								<strong ref={ this.endDate }></strong>
+							</Fragment>
+						</Grid.Column>
+					</Grid.Row>
+					:
+					<Grid.Row style={{ display: 'flex' }}>
+						{console.log('2')}
+						<Grid.Column style={{ marginLeft: '-1%', width: '20%'}} width={3}>
+							<Dropdown
+								placeholder='On'
+								fluid
+								selection
+								style={{border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', fontSize: '12px', width: '100%'}}
+								options={ onAroundAndBefore }
+								onChange={ this.selectModifier }
+								// text={ timeModifier ? timeModifier : 'On' }
+							/>
+						</Grid.Column>
+
+						<Grid.Column style={{ marginLeft: '1%', width: '15%'}} width={3}>
+							<Button onClick={ this.toggleDayPicker } style={{width: '100%'}}>Select Date</Button>
+						</Grid.Column>
+
+						<Grid.Column style={{width: '65%'}} width={3}>
+							<Fragment>
+								<Popup
+									style={{ marginTop: '3%' }}
+									context={ this.oneDate }
+									content={ <DayPicker/> }
+									position='right center'
+									open={ this.state.openDayPicker }
+								/>
+								<strong ref={ this.oneDate }></strong>
+							</Fragment>
+						</Grid.Column>
+					</Grid.Row>
+					}
 				</Grid.Row>
-			</Grid.Row>
 		)
 	}
 }
