@@ -36,6 +36,7 @@ class TimeOfInteraction extends Component {
 
 	componentDidUpdate = (prevProps, prevState) => {
 		const { currentlySelectedAssociation } = this.props;
+		const { selectedModifier } = this.state;
 
 		if (currentlySelectedAssociation != prevProps.currentlySelectedAssociation) {
 			this.setState({
@@ -43,6 +44,15 @@ class TimeOfInteraction extends Component {
 			})
 		}
 
+		if (prevState.selectedModifier != selectedModifier) {
+			if (prevState.selectedModifier) {
+				this.setState({
+					formattedSelectedDay: null,
+					selectedStartDay: null,
+					selectedEndDay: null,
+				})
+			}
+		}
 	};
 
 	selectModifier = (event, data) => {
@@ -111,6 +121,8 @@ class TimeOfInteraction extends Component {
 	render() {
 		const { onAroundAndBefore } = JSON;
 		const { selectedModifier, formattedSelectedDay, selectedStartDay, selectedEndDay } = this.state;
+
+		console.log(this.state)
 
 		return (
 			<Grid.Row id={'time-of-interaction-master-row'}>
