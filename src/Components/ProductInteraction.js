@@ -29,13 +29,14 @@ class ProductInteraction extends Component {
 		//if selectedGender does not equal the previous value of selectedGender
 		if (selectedGender != prevState.selectedGender) {
 			const initialAssociation = null;
+			const initialGender = null;
 			const initialGarments = [];
 
 			//set selectedAssociation and SelectedGarments back to their initial values
 			this.setState({
 				selectedAssociation: initialAssociation,
 				selectedGarments: initialGarments,
-			}, this.props.retrieveAssociation(initialAssociation), this.props.retrieveSelectedGarments(initialGarments))
+			}, this.props.retrieveAssociation(initialAssociation), this.props.retrieveSelectedGarments(initialGarments), this.props.retrieveGender(initialGender))
 		}
 	};
 

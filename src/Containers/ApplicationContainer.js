@@ -12,6 +12,7 @@ import {
 	Grid,
 	Divider,
 	Segment,
+	Modal,
 } from 'semantic-ui-react';
 
 import '../CSS/ApplicationContainer.css';
@@ -111,8 +112,20 @@ export default class ApplicationContainer extends Component {
 		})
 	};
 
+	printSourceCode = () => {
+		console.log(this.state)
+		// this.setState({
+		// 	printSourceCode: true,
+		// })
+	};
+
 	render() {
-		const { conditionHistory, currentlySelectedGender, currentlySelectedAssociation, currentlySelectedGarments } = this.state;
+		const {
+			conditionHistory,
+			currentlySelectedGender,
+			currentlySelectedAssociation,
+			currentlySelectedGarments
+		} = this.state;
 
 		console.log(this.state)
 
@@ -178,8 +191,34 @@ export default class ApplicationContainer extends Component {
 						<NewCondition />
 						<Grid.Column width={6}></Grid.Column>
 						<Grid.Column width={6}></Grid.Column>
-						<Grid.Column width={4} style={{paddingLeft: '5%', textAlign: 'right', fontSize: '12px'}}>
-							<a>Show source code</a>
+						<Grid.Column width={4} style={{paddingLeft: '5%', textAlign: 'right', fontSize: '12px', marginTop: '-1%', paddingBottom: '3%'}}>
+							<Modal
+								trigger={<a onClick={ this.printSourceCode }>Show source code</a>}
+							>
+								<Modal.Content>
+									{
+										<ul>
+											<li>Product Interactions
+												<ul>
+													<li>currentlySelectedGender: {JSON.stringify(currentlySelectedGender)}</li>
+													<li>currentlySelectedAssociation: {JSON.stringify(currentlySelectedAssociation)}</li>
+													<li>currentlySelectedGarments: {JSON.stringify(currentlySelectedGarments)}</li>
+													<ul>
+														<li>pastProductConditions:</li>
+														<ul>{conditionHistory.map((entry, i) => {
+															return(
+																<li key={i}>{JSON.stringify(entry)}</li>
+															)
+														})}</ul>
+
+													</ul>
+												</ul>
+											</li>
+										</ul>
+									}
+								</Modal.Content>
+							</Modal>
+
 						</Grid.Column>
 					</Grid.Row>
 
