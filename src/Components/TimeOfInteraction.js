@@ -121,8 +121,15 @@ class TimeOfInteraction extends Component {
 	};
 
 	render() {
+		const {
+			selectedModifier,
+			formattedSelectedDay,
+			selectedStartDay,
+			selectedEndDay,
+			betweenModifier
+		} = this.state;
+
 		const { onAroundAndBefore } = JSON;
-		const { selectedModifier, formattedSelectedDay, selectedStartDay, selectedEndDay, betweenModifier } = this.state;
 
 		return (
 			<Grid.Row id={'time-of-interaction-master-row'}>
