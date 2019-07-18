@@ -121,10 +121,16 @@ export default class ApplicationContainer extends Component {
 
 	render() {
 		const {
-			conditionHistory,
 			currentlySelectedGender,
 			currentlySelectedAssociation,
-			currentlySelectedGarments
+			currentlySelectedGarments,
+			conditionHistory,
+			selectedModifier,
+			selectedDay,
+			selectedStartDay,
+			selectedEndDay,
+			selectedDevice,
+			selectedOperatingSystem,
 		} = this.state;
 
 		console.log(this.state)
@@ -213,6 +219,21 @@ export default class ApplicationContainer extends Component {
 
 													</ul>
 												</ul>
+												<li>Time of Interaction
+													<ul>
+														<li>dateModifier: {JSON.stringify(selectedModifier)}</li>
+														<li>selectedDay: {JSON.stringify(selectedDay)}</li>
+														<li>selectedStartDay: {JSON.stringify(selectedStartDay)}</li>
+														<li>selectedEndDay: {JSON.stringify(selectedEndDay)}</li>
+													</ul>
+												</li>
+
+												<li> Technology Used
+													<ul>
+														<li>selectedDevice: {JSON.stringify(selectedDevice)}</li>
+														<li>selectedOperatingSystem: {JSON.stringify(selectedOperatingSystem)}</li>
+													</ul>
+												</li>
 											</li>
 										</ul>
 									}
