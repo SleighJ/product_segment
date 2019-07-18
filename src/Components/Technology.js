@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import JSON from '../JSON/JSON';
 
 import {
 	Grid,
@@ -16,11 +17,27 @@ class Technology extends Component {
 		super(props)
 
 		this.state = {
-
+			selectedDevice: null,
 		}
 	}
 
+	selectDevice = (event, data) => {
+		const { value } = data;
+		const selectedDevice = value;
+
+		this.setState({
+			selectedDevice,
+		})
+	};
+
+
 	render() {
+
+		const { devices, operatingSystems, deviceModifiers } = JSON;
+		const { selectedDevice } = this.state;
+
+		console.log(selectedDevice)
+
 		return (
 			<Segment id={'technology-segment-master'}>
 
@@ -46,8 +63,9 @@ class Technology extends Component {
 							fluid
 							selection
 							style={{border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', fontSize: '12px', width: '100%'}}
-							// options={devices}
-							// onChange={ this.selectDevice }
+							options={devices}
+							onChange={ this.selectDevice }
+							value={ selectedDevice ? selectedDevice : null }
 							// text={ selectedDevice ? selectedDevice : 'Device' }
 
 						/>
@@ -58,8 +76,8 @@ class Technology extends Component {
 							fluid
 							selection
 							style={{border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', fontSize: '12px', width: '100%'}}
-							// options={deviceModifiers}
-							value={ 'Uses' }
+							options={deviceModifiers}
+							value={ deviceModifiers[0].value }
 						/>
 					</Grid.Column>
 					<Grid.Column style={{marginLeft: '1%', width: '55%', textAlign:'left', height: '30%'}} width={6} align={'left'}>
@@ -69,10 +87,8 @@ class Technology extends Component {
 							placeholder='Operating System'
 							fluid
 							selection
-						// 	text={ selectedOperatingSystem ? selectedOperatingSystem.value : 'Operating System' }
-						// 	style={{border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', fontSize: '12px', width: '100%'}}
-						// 	options={ deviceOsOptions ? deviceOsOptions : null }
-						// 	onChange={ this.selectOperatingSystem }
+							options={ operatingSystems.filter(system => system.devices == selectedDevice) }
+							// 	onChange={ this.selectOperatingSystem }
 						/>
 					</Grid.Column>
 				</Grid.Row>

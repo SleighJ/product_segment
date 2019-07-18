@@ -177,8 +177,8 @@ const onAroundAndBefore = [
 const devices = [
 	{
 		key: 1,
-		text: 'Web',
-		value: 'Web',
+		text: 'Computer',
+		value: 'Computer',
 		os: ['Mac', 'Windows', 'Other']
 	},
 	{
@@ -194,7 +194,7 @@ const operatingSystems = [
 		key: 1,
 		text: 'MacOS',
 		value: 'MacOS',
-		devices: [ 'Web' ]
+		devices: [ 'Computer' ]
 	},{
 		key: 2,
 		text: 'iOS',
@@ -204,7 +204,7 @@ const operatingSystems = [
 		key: 3,
 		text: 'Windows',
 		value: 'Windows',
-		devices: [ 'Web' ]
+		devices: [ 'Computer' ]
 	},{
 		key: 4,
 		text: 'Android',
@@ -214,15 +214,45 @@ const operatingSystems = [
 		key: 5,
 		text: 'Other',
 		value: 'Other',
-		devices: [ 'Web', 'Mobile' ],
-	}
+		devices: [ 'Computer', 'Mobile' ],
+	}, {
+		key: 6,
+		text: 'Unix',
+		value: 'Unix',
+		devices: [ 'Computer' ]
+	}, {
+		key: 7,
+		text: 'Ubuntu',
+		value: 'Ubuntu',
+		devices: [ 'Computer' ]
+	},{
+		key: 8,
+		text: 'Linux',
+		value: 'Linux',
+		devices: [ 'Computer' ]
+	},{
+		key: 9,
+		text: 'Bada (Samsung)',
+		value: 'Bada (Samsung)',
+		devices: [ 'Mobile' ]
+	},{
+		key: 10,
+		text: 'Blackberry OS',
+		value: 'Blackberry OS',
+		devices: [ 'Mobile' ]
+	},{
+		key: 11,
+		text: 'Windows Mobile',
+		value: 'Windows Mobile',
+		devices: [ 'Mobile' ]
+	},
 ];
 
 const deviceModifiers = [
 	{
 		key: 1,
-		text: 'Uses',
-		value: 'Uses',
+		text: 'Using',
+		value: 'Using',
 	}
 ];
 
