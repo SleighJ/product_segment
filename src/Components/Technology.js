@@ -18,6 +18,8 @@ class Technology extends Component {
 
 		this.state = {
 			selectedDevice: null,
+			selectedDeviceModifier: null,
+			selectedOperatingSystem: null,
 		}
 	}
 
@@ -30,13 +32,36 @@ class Technology extends Component {
 		})
 	};
 
+	selectDeviceModifier = (event, data) => {
+		const { value } = data;
+		const selectedDeviceModifier = value;
+
+		this.setState({
+			selectedDeviceModifier,
+		})
+	};
+
+	selectOperatingSystem = (event, data) => {
+		const { value } = data;
+		const selectedOperatingSystem = value;
+
+		this.setState({
+			selectedOperatingSystem,
+		})
+	};
+
+	deleteTechnology = () => {
+		this.setState({
+			selectedDevice: null,
+			selectedDeviceModifier: null,
+			selectedOperatingSystem: null,
+		})
+	};
 
 	render() {
 
 		const { devices, operatingSystems, deviceModifiers } = JSON;
-		const { selectedDevice } = this.state;
-
-		console.log(selectedDevice)
+		const { selectedDevice, selectedDeviceModifier, selectedOperatingSystem } = this.state;
 
 		return (
 			<Segment id={'technology-segment-master'}>
@@ -50,7 +75,7 @@ class Technology extends Component {
 					</Grid.Column>
 
 					<Grid.Column width={4} style={{width: '100%'}}>
-						<Button floated={'right'} size={'tiny'} style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey', marginRight: '2%'}}> <Icon name={'trash'}> </Icon> Delete </Button>
+						<Button onClick={ this.deleteTechnology } floated={'right'} size={'tiny'} style={{fontFamily: 'IBM Plex Sans', border: '1.5px solid lightGrey', backgroundColor: 'white', color: 'lightGrey', marginRight: '2%'}}> <Icon name={'trash'}> </Icon> Delete </Button>
 					</Grid.Column>
 
 				</Grid.Row>
@@ -72,12 +97,14 @@ class Technology extends Component {
 					</Grid.Column>
 					<Grid.Column style={{marginLeft: '1%', width: '15%'}} width={5}>
 						<Dropdown
-							placeholder='Uses'
+							placeholder='Using'
 							fluid
 							selection
 							style={{border: '1.2px solid', borderColor: 'rgb(180, 180, 180)', fontSize: '12px', width: '100%'}}
-							options={deviceModifiers}
-							value={ deviceModifiers[0].value }
+							disabled={ selectedDevice ? false : true }
+							options={ deviceModifiers }
+							onChange={ this.selectDeviceModifier }
+							value={ selectedDeviceModifier ? selectedDeviceModifier : null }
 						/>
 					</Grid.Column>
 					<Grid.Column style={{marginLeft: '1%', width: '55%', textAlign:'left', height: '30%'}} width={6} align={'left'}>
@@ -87,8 +114,10 @@ class Technology extends Component {
 							placeholder='Operating System'
 							fluid
 							selection
+							disabled={ selectedDevice ? false : true }
 							options={ operatingSystems.filter(system => system.devices == selectedDevice) }
-							// 	onChange={ this.selectOperatingSystem }
+							onChange={ this.selectOperatingSystem }
+							value={ selectedOperatingSystem ? selectedOperatingSystem : null}
 						/>
 					</Grid.Column>
 				</Grid.Row>
