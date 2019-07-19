@@ -37,6 +37,9 @@ export default class ApplicationContainer extends Component {
 			//technology
 			selectedDevice: null,
 			selectedOperatingSystem: null,
+			//segment size
+			numberOfGender: null,
+			currentSegmentSize: null,
 		}
 	}
 
@@ -65,13 +68,30 @@ export default class ApplicationContainer extends Component {
 		})
 	};
 
+	// TODO add segment values to history here for deletion of history modifiers
 	//retrieves active conditions from <ProductInteraction /> and passes them to <SegmentSize />
 	retrieveCondition = (conditionHistoryObj) => {
-		const { conditionHistory } = this.state;
+		const { conditionHistory, currentSegmentSize, numberOfGender } = this.state;
 
-		this.setState({
-			conditionHistory: [...conditionHistory, conditionHistoryObj],
-		})
+		console.log(conditionHistoryObj)
+
+		if (currentSegmentSize) {
+
+			let conditionHistoryObjCopy = {
+				selectedAssociation: conditionHistoryObj.selectedAssociation,
+				selectedGarments: conditionHistoryObj.selectedGarments,
+				selectedGender: conditionHistoryObj.selectedGender,
+				numberOfGender: numberOfGender,
+				segmentSizeSnapShot: currentSegmentSize,
+			};
+
+			this.setState({
+				conditionHistory: [...conditionHistory, conditionHistoryObjCopy],
+			})
+		}
+		// this.setState({
+		// 	conditionHistory: [...conditionHistory, conditionHistoryObj],
+		// })
 	};
 
 	// Time
@@ -127,6 +147,20 @@ export default class ApplicationContainer extends Component {
 		console.log(currentData)
 	};
 
+	//Segment Size
+
+	retrieveNumberOfGender = (numberOfGender) => {
+		this.setState({
+			numberOfGender,
+		})
+	};
+
+	retrieveSegmentSize = (currentSegmentSize) => {
+		this.setState({
+			currentSegmentSize,
+		})
+	};
+
 	render() {
 		const {
 			currentlySelectedGender,
@@ -141,8 +175,6 @@ export default class ApplicationContainer extends Component {
 			selectedOperatingSystem,
 		} = this.state;
 
-		console.log(this.state)
-
 		return (
 				<Grid>
 					<Grid.Row id={'row'} columns={2}>
@@ -152,10 +184,20 @@ export default class ApplicationContainer extends Component {
 
 						<Grid.Column width={10}>
 							<SegmentSize
+								//state values
 								currentlySelectedGender={ currentlySelectedGender }
 								currentlySelectedAssociation={ currentlySelectedAssociation }
 								currentlySelectedGarments={ currentlySelectedGarments }
 								conditionHistory={ conditionHistory }
+								selectedModifier={ selectedModifier }
+								selectedDay={ selectedDay }
+								selectedStartDay={ selectedStartDay }
+								selectedEndDay={ selectedEndDay }
+								selectedDevice={ selectedDevice }
+								selectedOperatingSystem={ selectedOperatingSystem }
+								//functions
+								retrieveNumberOfGender={ this.retrieveNumberOfGender }
+								retrieveSegmentSize={ this.retrieveSegmentSize }
 							/>
 						</Grid.Column>
 					</Grid.Row>

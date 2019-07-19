@@ -91,18 +91,7 @@ const data = [
 class NewCondition extends Component {
 	constructor(props) {
 		super(props)
-
-		this.state = {
-			modalOpen: false,
-		}
 	}
-
-	openModal = () => {
-		console.log('asdf')
-		this.setState({
-			modalOpen: !this.state.modalOpen,
-		})
-	};
 
 	render(){
 		return (
@@ -114,14 +103,13 @@ class NewCondition extends Component {
 
 					<Grid.Column width={9} floated={'right'}>
 						<Modal
-							trigger={
-								<Button
-									size={'tiny'}
-									style={{fontFamily: 'IBM Plex Sans', backgroundColor: 'rgb(38, 165, 132)', color: 'white'}}
-									onClick={ this.openModal }
-								> <Icon name={'database'}/> Analyze
-								</Button>
-							}>
+							trigger={<Button
+										size={'tiny'}
+										style={{fontFamily: 'IBM Plex Sans', backgroundColor: 'rgb(38, 165, 132)', color: 'white'}}
+									  >
+										<Icon name={'database'}/> Analyze
+									</Button>}
+						>
 							<Modal.Header>Woah, its a graph</Modal.Header>
 							<Modal.Content>
 								<div style={{width: '400px', height: '400px'}}>
