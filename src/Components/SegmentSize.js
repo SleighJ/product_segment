@@ -22,8 +22,10 @@ class SegmentSize extends Component {
 	}
 
 	componentDidUpdate = (prevProps, prevState) => {
-		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender } = this.props;
-		const { conditionHistory } = this.state;
+		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory } = this.props;
+		const {  } = this.state;
+
+		let startPercent;
 
 		if (currentlySelectedGender) {
 			if (currentlySelectedGender != prevProps.currentlySelectedGender) {
@@ -32,56 +34,50 @@ class SegmentSize extends Component {
 					currentlySelectedGender,
 				});
 
-					let genderCoefficient;
+				let genderCoefficient;
 
-					if (!conditionHistory) {
-						switch (currentlySelectedGender) {
-							case 'Men':
-								genderCoefficient = .4444445;
-								break;
-							case 'Women':
-								genderCoefficient = .6666667;
-								break;
-							case 'Unisex':
-								genderCoefficient = .8888889;
-								break;
-							case 'Boys':
-								genderCoefficient = .3333334;
-								break;
-							case 'Girls':
-								genderCoefficient = .3333334;
-								break;
-							case 'Aliens':
-								genderCoefficient = .8787879;
-								break;
-						}
-					} else {
-						//for condition history
-						console.log('condition history code needed')
-					}
-
-					let calculateNumberOfGender = this.state.totalUsers * genderCoefficient;
-					let calculateSegmentSize = this.state.segmentSize * genderCoefficient;
-
-					//if what is saved from the past cycle is not null
-					if (this.state.currentlySelectedGender) {
-						//if both the current and passed values are defined and do not equal each other, there has been a change
-						if (currentlySelectedGender != this.state.currentlySelectedGender) {
-							calculateSegmentSize = genderCoefficient * 100;
-						}
-					}
-
-					const numberOfGender = calculateNumberOfGender.toFixed(0);
-					const segmentSize = calculateSegmentSize.toFixed(0);
-
-					this.setState({
-							numberOfGender,
-							segmentSize,
-						},
-					this.props.retrieveNumberOfGender(numberOfGender),
-					this.props.retrieveSegmentSize(segmentSize))
+				switch (currentlySelectedGender) {
+					case 'Men':
+						genderCoefficient = .4444445;
+						break;
+					case 'Women':
+						genderCoefficient = .6666667;
+						break;
+					case 'Unisex':
+						genderCoefficient = .8888889;
+						break;
+					case 'Boys':
+						genderCoefficient = .3333334;
+						break;
+					case 'Girls':
+						genderCoefficient = .3333334;
+						break;
+					case 'Aliens':
+						genderCoefficient = .8787879;
+						break;
 				}
+
+				if (conditionHistory.length == 0) {
+					startPercent = 100;
+				} else {
+					const conditionHistoryCopy = [...conditionHistory];
+					const lastConditionHistoryObj = conditionHistoryCopy.pop();
+					startPercent = lastConditionHistoryObj.segmentSizeSnapShot;
+				}
+
+				let calculateNumberOfGender = this.state.totalUsers * genderCoefficient;
+				let calculateSegmentSize = startPercent * genderCoefficient;
+				const numberOfGender = calculateNumberOfGender.toFixed(0);
+				const segmentSize = calculateSegmentSize.toFixed(0);
+
+				this.setState({
+						numberOfGender,
+						segmentSize,
+					},
+				this.props.retrieveNumberOfGender(numberOfGender),
+				this.props.retrieveSegmentSize(segmentSize))
 			}
+		}
 
 		if (currentlySelectedAssociation != prevProps.currentlySelectedAssociation) {
 			//load in new values
@@ -97,24 +93,7 @@ class SegmentSize extends Component {
 			this.setState({
 				currentlySelectedGarments,
 			});
-
-			//TODO: CALCULATE THE NUMBER OF USERS SEARCHING FOR THOSE GARMENTS BY GENDER (ie: state.numberOfGender * coefficients of people who like those garments)
-
-			//
-			// if (currentlySelectedGarments.length > prevProps.currentlySelectedGarments.length) {
-			// 	garmentCoefficient = 1.1;
-			// } else {
-			// 	garmentCoefficient = .9;
-			// }
-			//
-			// const calculateSegmentSize = garmentCoefficient * segmentSize;
-			// const segmentSize = calculateSegmentSize.toFixed(0);
-			//
-			// this.setState({
-			// 	segmentSize,
-			// })
 		}
-
 	};
 
 	render() {
