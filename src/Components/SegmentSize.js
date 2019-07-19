@@ -23,9 +23,10 @@ class SegmentSize extends Component {
 
 	componentDidUpdate = (prevProps, prevState) => {
 		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory } = this.props;
-		const {  } = this.state;
+		const { segmentSize } = this.state;
 
 		let startPercent;
+		let numberOfGenderConditionHistory;
 
 		if (currentlySelectedGender) {
 			if (currentlySelectedGender != prevProps.currentlySelectedGender) {
@@ -59,13 +60,15 @@ class SegmentSize extends Component {
 
 				if (conditionHistory.length == 0) {
 					startPercent = 100;
+					numberOfGenderConditionHistory = this.state.totalUsers;
 				} else {
 					const conditionHistoryCopy = [...conditionHistory];
 					const lastConditionHistoryObj = conditionHistoryCopy.pop();
 					startPercent = lastConditionHistoryObj.segmentSizeSnapShot;
+					numberOfGenderConditionHistory = lastConditionHistoryObj.numberOfGender;
 				}
 
-				let calculateNumberOfGender = this.state.totalUsers * genderCoefficient;
+				let calculateNumberOfGender = numberOfGenderConditionHistory * genderCoefficient;
 				let calculateSegmentSize = startPercent * genderCoefficient;
 				const numberOfGender = calculateNumberOfGender.toFixed(0);
 				const segmentSize = calculateSegmentSize.toFixed(0);
@@ -86,13 +89,35 @@ class SegmentSize extends Component {
 			});
 		}
 
+
+		//TODO: finish here, adding and subtracting garments on active row
+		// if there is a change in number of garments
 		if (currentlySelectedGarments.length != prevProps.currentlySelectedGarments.length) {
-			let garmentCoefficient;
 
 			//load in the current items into state
 			this.setState({
 				currentlySelectedGarments,
 			});
+
+			let coefficient;
+			//if user is adding garments to row
+			if (currentlySelectedGarments.length > prevProps.currentlySelectedGarments.length) {
+				coefficient = 9;
+			} else {
+				coefficient = 1.1;
+			}
+
+			console.log(segmentSize)
+
+			// let segmentSizeCopy = segmentSize;
+			// const calculateSegmentSize = segmentSizeCopy * coefficient;
+			// const segmentSize = calculateSegmentSize.toFixed(0);
+			// const numberOfGarments = currentlySelectedGarments.length;
+			//
+			// const jj = numberOfGarments * coefficient
+			//
+			// console.log(segmentSize, jj)
+
 		}
 	};
 
