@@ -16,6 +16,7 @@ class SegmentSize extends Component {
 			segmentSize: 100,
 			totalUsers: 2345678,
 			//logic
+			previousSegmentSize: null,
 			currentlySelectedGender: null,
 			numberOfGender: null,
 		}
@@ -23,7 +24,7 @@ class SegmentSize extends Component {
 
 	componentDidUpdate = (prevProps, prevState) => {
 		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory } = this.props;
-		const { segmentSize } = this.state;
+		const { segmentSize, previousSegmentSize } = this.state;
 
 		let startPercent;
 		let numberOfGenderConditionHistory;
@@ -89,35 +90,25 @@ class SegmentSize extends Component {
 			});
 		}
 
-
-		//TODO: finish here, adding and subtracting garments on active row
-		// if there is a change in number of garments
 		if (currentlySelectedGarments.length != prevProps.currentlySelectedGarments.length) {
-
+			let newSegmentSize;
 			//load in the current items into state
+
 			this.setState({
 				currentlySelectedGarments,
 			});
 
-			let coefficient;
-			//if user is adding garments to row
+			//if user is adding
 			if (currentlySelectedGarments.length > prevProps.currentlySelectedGarments.length) {
-				coefficient = 9;
+				newSegmentSize = segmentSize * .9;
+			//if user is subtracting
 			} else {
-				coefficient = 1.1;
+				newSegmentSize = segmentSize / .9;
 			}
 
-			console.log(segmentSize)
-
-			// let segmentSizeCopy = segmentSize;
-			// const calculateSegmentSize = segmentSizeCopy * coefficient;
-			// const segmentSize = calculateSegmentSize.toFixed(0);
-			// const numberOfGarments = currentlySelectedGarments.length;
-			//
-			// const jj = numberOfGarments * coefficient
-			//
-			// console.log(segmentSize, jj)
-
+			this.setState({
+				segmentSize: newSegmentSize,
+			})
 		}
 	};
 
