@@ -115,8 +115,8 @@ class SegmentSize extends Component {
 			//save the size of the market and percentage bar figure locally, but pass it to the parent so it can save it to conditionHistory
 			//and pass it to <ProductInteractions /> so it can access it
 			this.setState({
-					numberOfGender,
-					segmentSize,
+				numberOfGender,
+				segmentSize,
 			},
 			this.props.retrieveNumberOfGender(numberOfGender),
 			this.props.retrieveSegmentSize(segmentSize))
@@ -166,7 +166,7 @@ class SegmentSize extends Component {
 			//set the local state segment size to the value determined above
 			this.setState({
 				segmentSize: newSegmentSize,
-			}, 	this.props.retrieveSegmentSize(segmentSize))
+			}, 	this.props.retrieveSegmentSize(newSegmentSize))
 		}
 
 

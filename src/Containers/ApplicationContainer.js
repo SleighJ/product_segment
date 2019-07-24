@@ -74,6 +74,9 @@ export default class ApplicationContainer extends Component {
 	retrieveCondition = (conditionHistoryObj) => {
 		const { conditionHistory, currentSegmentSize, numberOfGender } = this.state;
 
+		console.log('from retrieveCondition in ApplicationContainer')
+		console.log(conditionHistory, currentSegmentSize, numberOfGender)
+
 		if (currentSegmentSize) {
 
 			let conditionHistoryObjCopy = {
