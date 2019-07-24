@@ -150,32 +150,24 @@ class SegmentSize extends Component {
 				selectedGarments: currentlySelectedGarments,
 			});
 
-			//if there is not conditionHistory
-			if (conditionHistory.length == 0) {
-				//if there is no value passed in for gender, but one is saved from the last iteration
-				if (!currentlySelectedGender && selectedGender) {
-					//a change has been made to gender and start percent and numberOfGenderConditionHistory needs to be reset
-					startPercent = 100;
-					numberOfGenderConditionHistory = this.state.totalUsers;
-				}
+			//if user is adding garments
+			if (currentlySelectedGarments.length > prevProps.currentlySelectedGarments.length) {
+				//reduce value to 90% of the current value
+				newSegmentSize = segmentSize * .9;
+				//if user is subtracting
+			} else {
+				//undo the last calculation by increasing it by 110%
+				newSegmentSize = segmentSize / .9;
 			}
 
-			if (currentlySelectedGarments.length != 0) {
-				//if user is adding garments
-				if (currentlySelectedGarments.length > prevProps.currentlySelectedGarments.length) {
-					//reduce value to 90% of the current value
-					newSegmentSize = segmentSize * .9;
-					//if user is subtracting
-				} else {
-					//undo the last calculation by increasing it by 110%
-					newSegmentSize = segmentSize / .9;
-				}
-
-				//set the local state segment size to the value determined above
-				this.setState({
-					segmentSize: newSegmentSize,
-				})
+			if (!currentlySelectedAssociation && currentlySelectedGarments.length == 0) {
+				newSegmentSize = segmentSize;
 			}
+
+			//set the local state segment size to the value determined above
+			this.setState({
+				segmentSize: newSegmentSize,
+			})
 		}
 
 
