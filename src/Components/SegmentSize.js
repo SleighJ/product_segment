@@ -35,7 +35,8 @@ class SegmentSize extends Component {
 	//accurately measured using prevProps and prevState since the user can toggle
 	//between components in addition to changing the order of operations within a component,
 	//resulting in props that represent the local state of the component rather than
-	//the local state of this component.
+	//the local state of this component. By this, only prop values will allow null, and state values
+	//will track the last iteration of data received.
 
 	//If a change is needed to be detected immediately, it will refer to the value in props,
 	//since conditionals requiring a state value will often not detect the state change in
@@ -47,10 +48,8 @@ class SegmentSize extends Component {
 	//does not equal the incoming value, and that the local state needs to save the new value.
 
 	componentDidUpdate = (prevProps, prevState) => {
-		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory } = this.props;
+		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory, removeCurrentProductConditions } = this.props;
 		const { segmentSize, selectedGender, selectedAssociation, selectedGarments, numberOfGender, history } = this.state;
-
-
 
 
 		{/*<--------------------------ProductInteractions: Gender------------------------->*/}
@@ -118,7 +117,7 @@ class SegmentSize extends Component {
 			this.setState({
 					numberOfGender,
 					segmentSize,
-				},
+			},
 			this.props.retrieveNumberOfGender(numberOfGender),
 			this.props.retrieveSegmentSize(segmentSize))
 		}
@@ -167,7 +166,7 @@ class SegmentSize extends Component {
 			//set the local state segment size to the value determined above
 			this.setState({
 				segmentSize: newSegmentSize,
-			})
+			}, 	this.props.retrieveSegmentSize(segmentSize))
 		}
 
 
@@ -180,17 +179,46 @@ class SegmentSize extends Component {
 				history: conditionHistory,
 			})
 		}
-		// console.log('current')
-		// console.log(this.state, this.props)
-		// console.log('previous')
-		// console.log(prevState, prevProps)
+
+		{/*<--------------------------ProductInteractions: Current Condition Removal------------------------->*/}
+
+		if (removeCurrentProductConditions) {
+			//if there is no selectedGender (ie, user removed condition)
+			genderCoefficient = 1;
+
+			if (conditionHistory.length > 0) {
+				const conditionHistoryCopy = [...conditionHistory];
+				const lastConditionHistoryObj = conditionHistoryCopy.pop();
+				startPercent = lastConditionHistoryObj.segmentSizeSnapShot;
+				numberOfGenderConditionHistory = lastConditionHistoryObj.numberOfGender;
+			} else {
+				startPercent = 100;
+				numberOfGenderConditionHistory = this.state.totalUsers;
+			}
+
+			let calculateNumberOfGender = numberOfGenderConditionHistory * genderCoefficient;
+			let calculateSegmentSize = startPercent * genderCoefficient;
+			const numberOfGender = calculateNumberOfGender.toFixed(0);
+			const segmentSize = calculateSegmentSize.toFixed(0);
+
+			//save the size of the market and percentage bar figure locally, but pass it to the parent so it can save it to conditionHistory
+			//and pass it to <ProductInteractions /> so it can access it
+			this.setState({
+				numberOfGender,
+				segmentSize,
+				selectedGarments: [],
+				selectedGender: null,
+				selectedAssociation: null,
+			},
+			this.props.retrieveNumberOfGender(numberOfGender),
+			this.props.retrieveSegmentSize(segmentSize),
+			this.props.retrieveRemoveCurrentConditions())
+		}
 	};
 
 	render() {
 
 		const { segmentSize, numberOfGender } = this.state;
-
-		// console.log(segmentSize)
 
 		return (
 				<Segment id={'segment-size'}>

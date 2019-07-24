@@ -40,6 +40,7 @@ export default class ApplicationContainer extends Component {
 			//segment size
 			numberOfGender: null,
 			currentSegmentSize: null,
+			removeCurrentProductConditions: false,
 		}
 	}
 
@@ -90,6 +91,12 @@ export default class ApplicationContainer extends Component {
 		// this.setState({
 		// 	conditionHistory: [...conditionHistory, conditionHistoryObj],
 		// })
+	};
+
+	retrieveRemoveCurrentConditions = () => {
+		this.setState({
+			removeCurrentProductConditions: !this.state.removeCurrentProductConditions,
+		})
 	};
 
 	// Time
@@ -171,6 +178,7 @@ export default class ApplicationContainer extends Component {
 			selectedEndDay,
 			selectedDevice,
 			selectedOperatingSystem,
+			removeCurrentProductConditions
 		} = this.state;
 
 		return (
@@ -193,9 +201,12 @@ export default class ApplicationContainer extends Component {
 								selectedEndDay={ selectedEndDay }
 								selectedDevice={ selectedDevice }
 								selectedOperatingSystem={ selectedOperatingSystem }
+								removeCurrentProductConditions={ removeCurrentProductConditions }
+
 								//functions
 								retrieveNumberOfGender={ this.retrieveNumberOfGender }
 								retrieveSegmentSize={ this.retrieveSegmentSize }
+								retrieveRemoveCurrentConditions={ this.retrieveRemoveCurrentConditions }
 							/>
 						</Grid.Column>
 					</Grid.Row>
@@ -212,6 +223,7 @@ export default class ApplicationContainer extends Component {
 								retrieveAssociation={ this.retrieveAssociation }
 								retrieveSelectedGarments={ this.retrieveSelectedGarments }
 								retrieveCondition={ this.retrieveCondition }
+								retrieveRemoveCurrentConditions={ this.retrieveRemoveCurrentConditions }
 							/>
 						</Grid.Row>
 

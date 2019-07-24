@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08933b8c-6e0e-497a-b47d-bf91cc200fc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ProductInteraction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ProductInteraction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/SegmentSize.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SegmentSize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Containers/ApplicationContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/ApplicationContainer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,14 +40,14 @@
         <counts>
           <entry key="css" value="3097" />
           <entry key="html" value="2" />
-          <entry key="js" value="39753" />
+          <entry key="js" value="41569" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="3097" />
           <entry key="HTML" value="2" />
-          <entry key="JavaScript" value="39753" />
+          <entry key="JavaScript" value="41569" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -61,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Containers/ApplicationContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="71" column="71" selection-start-line="71" selection-start-column="71" selection-end-line="71" selection-end-column="71" />
+            <state relative-caret-position="355">
+              <caret line="208" column="102" selection-start-line="208" selection-start-column="71" selection-end-line="208" selection-end-column="102" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -73,8 +74,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/SegmentSize.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="164" selection-start-line="164" selection-end-line="164" />
+            <state relative-caret-position="454">
+              <caret line="213" column="56" lean-forward="true" selection-start-line="213" selection-start-column="56" selection-end-line="213" selection-end-column="56" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -85,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/ProductInteraction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="92" column="31" lean-forward="true" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+            <state relative-caret-position="420">
+              <caret line="75" column="57" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="57" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -180,10 +181,10 @@
       <find>ref</find>
       <find>currentlySelectedAssociation</find>
       <find>intere</find>
-      <find>.filter</find>
       <find>consolel</find>
       <find>console.</find>
       <find>conditionHistory</find>
+      <find>.filter</find>
       <find>console.log</find>
     </findStrings>
   </component>
@@ -214,9 +215,9 @@
         <option value="$PROJECT_DIR$/src/JSON/JSON.js" />
         <option value="$PROJECT_DIR$/src/Components/Technology.js" />
         <option value="$PROJECT_DIR$/src/Components/TimeOfInteraction.js" />
-        <option value="$PROJECT_DIR$/src/Components/ProductInteraction.js" />
         <option value="$PROJECT_DIR$/src/Components/Graph.js" />
         <option value="$PROJECT_DIR$/src/Components/NewCondition.js" />
+        <option value="$PROJECT_DIR$/src/Components/ProductInteraction.js" />
         <option value="$PROJECT_DIR$/src/Containers/ApplicationContainer.js" />
         <option value="$PROJECT_DIR$/src/Components/SegmentSize.js" />
       </list>
@@ -334,7 +335,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86398000" />
+    <option name="totallyTimeSpent" value="89641000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -562,8 +563,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/ProductInteraction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="92" column="31" lean-forward="true" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+        <state relative-caret-position="420">
+          <caret line="75" column="57" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="57" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -572,8 +573,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Containers/ApplicationContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="71" selection-start-line="71" selection-start-column="71" selection-end-line="71" selection-end-column="71" />
+        <state relative-caret-position="355">
+          <caret line="208" column="102" selection-start-line="208" selection-start-column="71" selection-end-line="208" selection-end-column="102" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -582,8 +583,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/SegmentSize.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="164" selection-start-line="164" selection-end-line="164" />
+        <state relative-caret-position="454">
+          <caret line="213" column="56" lean-forward="true" selection-start-line="213" selection-start-column="56" selection-end-line="213" selection-end-column="56" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

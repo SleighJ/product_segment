@@ -73,7 +73,7 @@ class ProductInteraction extends Component {
 			selectedGender: null,
 			selectedAssociation: null,
 			selectedGarments: [],
-		})
+		}, ()=>this.props.retrieveRemoveCurrentConditions())
 	};
 	//this saves input values and passes them to the <ApplicationContainer /> to enter into history
 	addProductCondition = () => {
