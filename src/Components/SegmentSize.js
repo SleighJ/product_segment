@@ -48,9 +48,8 @@ class SegmentSize extends Component {
 	//does not equal the incoming value, and that the local state needs to save the new value.
 
 	componentDidUpdate = (prevProps, prevState) => {
-		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory, removeCurrentProductConditions } = this.props;
+		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory, removeCurrentProductConditions, lastRemovedHistoryObject } = this.props;
 		const { segmentSize, selectedGender, selectedAssociation, selectedGarments, numberOfGender, history } = this.state;
-
 
 		{/*<--------------------------ProductInteractions: Gender------------------------->*/}
 
@@ -110,7 +109,8 @@ class SegmentSize extends Component {
 			let calculateNumberOfGender = numberOfGenderConditionHistory * genderCoefficient;
 			let calculateSegmentSize = startPercent * genderCoefficient;
 			const numberOfGender = calculateNumberOfGender.toFixed(0);
-			const segmentSize = calculateSegmentSize.toFixed(0);
+			const segmentSize = calculateSegmentSize;
+
 
 			//save the size of the market and percentage bar figure locally, but pass it to the parent so it can save it to conditionHistory
 			//and pass it to <ProductInteractions /> so it can access it
@@ -175,9 +175,47 @@ class SegmentSize extends Component {
 		{/*<--------------------------ProductInteractions: Condition History------------------------->*/}
 
 		if (conditionHistory.length != history.length) {
+
+			//if condition history from props is smaller than the value saved from the last iteration, user is removing conditions
+			if (conditionHistory.length < history.length) {
+
+				let newSegmentSize = this.state.segmentSize;
+				const removedGarments = lastRemovedHistoryObject.selectedGarments;
+				const removedGender = lastRemovedHistoryObject.selectedGender;
+
+				removedGarments.map((garment, i) => {
+					newSegmentSize = newSegmentSize / .9;
+				});
+
+				switch (removedGender) {
+					case 'Men':
+						newSegmentSize = newSegmentSize / .4444445;
+						break;
+					case 'Women':
+						newSegmentSize = newSegmentSize / .6666667;
+						break;
+					case 'Unisex':
+						newSegmentSize = newSegmentSize / .8888889;
+						break;
+					case 'Boys':
+						newSegmentSize = newSegmentSize / .3333334;
+						break;
+					case 'Girls':
+						newSegmentSize = newSegmentSize / .3333334;
+						break;
+					case 'Aliens':
+						newSegmentSize = newSegmentSize / .8787879;
+						break;
+				}
+
+				this.setState({
+					segmentSize: newSegmentSize,
+				}, 	this.props.retrieveSegmentSize(newSegmentSize))
+			}
+
 			this.setState({
 				history: conditionHistory,
-			})
+			});
 		}
 
 		{/*<--------------------------ProductInteractions: Current Condition Removal------------------------->*/}
@@ -199,7 +237,7 @@ class SegmentSize extends Component {
 			let calculateNumberOfGender = numberOfGenderConditionHistory * genderCoefficient;
 			let calculateSegmentSize = startPercent * genderCoefficient;
 			const numberOfGender = calculateNumberOfGender.toFixed(0);
-			const segmentSize = calculateSegmentSize.toFixed(0);
+			const segmentSize = calculateSegmentSize;
 
 			//save the size of the market and percentage bar figure locally, but pass it to the parent so it can save it to conditionHistory
 			//and pass it to <ProductInteractions /> so it can access it

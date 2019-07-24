@@ -34,12 +34,16 @@ class ProductInteractionHistory extends Component {
 		const { id } = data;
 		const { conditionHistory } = this.state;
 		const conditionHistoryCopy = [...conditionHistory];
+		const removedHistoryObject = conditionHistoryCopy[id];
 
 		conditionHistoryCopy.splice(id, 1);
 
+
 		this.setState({
 			conditionHistory: conditionHistoryCopy,
-		})
+		},
+		this.props.retrieveConditionHistory(conditionHistoryCopy),
+		this.props.retrieveRemovedHistoryCondition(removedHistoryObject, conditionHistory, conditionHistoryCopy))
 	};
 
 	render(){

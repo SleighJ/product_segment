@@ -40,6 +40,7 @@ export default class ApplicationContainer extends Component {
 			//segment size
 			numberOfGender: null,
 			currentSegmentSize: null,
+			lastRemovedHistoryObject: null,
 			removeCurrentProductConditions: false,
 		}
 	}
@@ -69,17 +70,16 @@ export default class ApplicationContainer extends Component {
 		})
 	};
 
-	// TODO add segment values to history here for deletion of history modifiers
 	//retrieves active conditions from <ProductInteraction /> and passes them to <SegmentSize />
 	retrieveCondition = (conditionHistoryObj) => {
 		const { conditionHistory, currentSegmentSize, numberOfGender } = this.state;
 
-		console.log('from retrieveCondition in ApplicationContainer')
-		console.log(conditionHistory, currentSegmentSize, numberOfGender)
-
 		if (currentSegmentSize) {
+			const conditionHistoryLength = conditionHistory.length;
+			const id = conditionHistoryLength > 0 ? conditionHistory[conditionHistoryLength-1].id + 1 : conditionHistoryLength;
 
 			let conditionHistoryObjCopy = {
+				id: id,
 				selectedAssociation: conditionHistoryObj.selectedAssociation,
 				selectedGarments: conditionHistoryObj.selectedGarments,
 				selectedGender: conditionHistoryObj.selectedGender,
@@ -91,14 +91,56 @@ export default class ApplicationContainer extends Component {
 				conditionHistory: [...conditionHistory, conditionHistoryObjCopy],
 			})
 		}
-		// this.setState({
-		// 	conditionHistory: [...conditionHistory, conditionHistoryObj],
-		// })
+	};
+
+	retrieveConditionHistory = (conditionHistory) => {
+		this.setState({
+			conditionHistory,
+		})
 	};
 
 	retrieveRemoveCurrentConditions = () => {
 		this.setState({
 			removeCurrentProductConditions: !this.state.removeCurrentProductConditions,
+		})
+	};
+
+	retrieveRemovedHistoryCondition = (removedHistoryObject, oldConditionHistory, newConditionHistory) => {
+		// let placement;
+		//
+		// const oldConditionHistoryIndex = oldConditionHistory.findIndex(function(condition, index) {
+		// 	const conditionId = condition.id;
+		// 	const removedHistoryObjectId = removedHistoryObject.id;
+		// 	return (conditionId === removedHistoryObjectId) ? true : false;
+		// });
+		//
+		// if (oldConditionHistoryIndex == oldConditionHistory.length-1) {
+		// 	placement = 'last'
+		// }
+		//
+		// if (0 < oldConditionHistoryIndex < oldConditionHistory.length-1) {
+		// 	placement = 'middle'
+		// }
+		//
+		//
+		// if (oldConditionHistoryIndex == 0) {
+		// 	placement = 'first'
+		// }
+		//
+		// switch (oldConditionHistoryIndex) {
+		// 	case 'first':
+		// 		console.log('first');
+		// 		break;
+		// 	case 'middle':
+		// 		console.log('middle');
+		// 		break;
+		// 	case 'last':
+		// 		console.log('last');
+		// 		break;
+		// }
+
+		this.setState({
+			lastRemovedHistoryObject: removedHistoryObject,
 		})
 	};
 
@@ -143,7 +185,7 @@ export default class ApplicationContainer extends Component {
 	};
 
 	printSourceCode = () => {
-		console.log(this.state)
+		// console.log(this.state)
 		// this.setState({
 		// 	printSourceCode: true,
 		// })
@@ -152,7 +194,7 @@ export default class ApplicationContainer extends Component {
 	copyJSON = () => {
 		const currentData = this.modalContent.current;
 
-		console.log(currentData)
+		// console.log(currentData)
 	};
 
 	//Segment Size
@@ -181,7 +223,8 @@ export default class ApplicationContainer extends Component {
 			selectedEndDay,
 			selectedDevice,
 			selectedOperatingSystem,
-			removeCurrentProductConditions
+			removeCurrentProductConditions,
+			lastRemovedHistoryObject,
 		} = this.state;
 
 		return (
@@ -205,6 +248,7 @@ export default class ApplicationContainer extends Component {
 								selectedDevice={ selectedDevice }
 								selectedOperatingSystem={ selectedOperatingSystem }
 								removeCurrentProductConditions={ removeCurrentProductConditions }
+								lastRemovedHistoryObject={ lastRemovedHistoryObject }
 
 								//functions
 								retrieveNumberOfGender={ this.retrieveNumberOfGender }
@@ -218,7 +262,12 @@ export default class ApplicationContainer extends Component {
 						<Grid.Row width={16}>
 
 							<ProductInteractionHistory
+								//state values
 								conditionHistory={ conditionHistory }
+
+								//functions
+								retrieveConditionHistory={ this.retrieveConditionHistory }
+								retrieveRemovedHistoryCondition={ this.retrieveRemovedHistoryCondition }
 							/>
 
 							<ProductInteraction
