@@ -324,7 +324,6 @@ class SegmentSize extends Component {
 		if (selectedDevice || prevProps.selectedDevice) {
 
 			const newSegmentSize = this.state.segmentSize;
-			const oldSegmentSize = technologyHistoryObject ? technologyHistoryObject.technologySnapShot.segmentSize : null;
 			const oldSelectedOS = technologyHistoryObject ? technologyHistoryObject.technologySnapShot.selectedOperatingSystem : null;
 			const oldSelectedDevice = technologyHistoryObject ? technologyHistoryObject.technologySnapShot.selectedDevice : null;
 
