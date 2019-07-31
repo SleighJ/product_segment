@@ -320,12 +320,14 @@ class SegmentSize extends Component {
 
 		{/*<--------------------------Technology Restraints------------------------->*/}
 
+		//TODO: needs conditional if user switches operatingSystem values, segmentBar needs to be reset (right now it compounds)
 
 		if (selectedDevice || prevProps.selectedDevice) {
 
-			const newSegmentSize = this.state.segmentSize;
 			const oldSelectedOS = technologyHistoryObject ? technologyHistoryObject.technologySnapShot.selectedOperatingSystem : null;
 			const oldSelectedDevice = technologyHistoryObject ? technologyHistoryObject.technologySnapShot.selectedDevice : null;
+
+			let newSegmentSize = this.state.segmentSize;
 
 			let segmentSizeCopy;
 			let deviceCoefficient;
@@ -409,6 +411,18 @@ class SegmentSize extends Component {
 					technologyHistoryObject: technologyHistoryObj,
 					segmentSize: segmentSizeCopy,
 				})
+			}
+
+			//if user switches to a different device, reset segment bar
+			if (selectedDevice != prevProps.selectedDevice) {
+				if (selectedDevice) {
+					if (technologyHistoryObject) {
+						newSegmentSize = technologyHistoryObject.technologySnapShot.segmentSize;
+						this.setState({
+							segmentSize: newSegmentSize,
+						})
+					}
+				}
 			}
 		}
 	};

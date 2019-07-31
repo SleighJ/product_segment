@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08933b8c-6e0e-497a-b47d-bf91cc200fc9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/SegmentSize.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SegmentSize.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,14 +39,14 @@
         <counts>
           <entry key="css" value="3097" />
           <entry key="html" value="2" />
-          <entry key="js" value="51294" />
+          <entry key="js" value="52046" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="3097" />
           <entry key="HTML" value="2" />
-          <entry key="JavaScript" value="51294" />
+          <entry key="JavaScript" value="52046" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -72,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/SegmentSize.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="326" selection-start-line="326" selection-end-line="326" />
+            <state relative-caret-position="141">
+              <caret line="322" column="128" selection-start-line="322" selection-start-column="128" selection-end-line="322" selection-end-column="128" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -353,7 +354,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117825000" />
+    <option name="totallyTimeSpent" value="119149000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -376,12 +377,12 @@
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="GraphQL" />
-      <window_info active="true" anchor="bottom" id="Terminal" sideWeight="0.4993895" visible="true" weight="0.26020408" />
+      <window_info anchor="bottom" id="Terminal" sideWeight="0.4993895" weight="0.26020408" />
       <window_info anchor="bottom" id="Event Log" sideWeight="0.50061053" side_tool="true" weight="0.26020408" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4993895" weight="0.32959184" />
@@ -601,8 +602,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/SegmentSize.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="326" selection-start-line="326" selection-end-line="326" />
+        <state relative-caret-position="141">
+          <caret line="322" column="128" selection-start-line="322" selection-start-column="128" selection-end-line="322" selection-end-column="128" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
