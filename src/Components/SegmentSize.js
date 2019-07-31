@@ -121,6 +121,7 @@ class SegmentSize extends Component {
 
 			//save the size of the market and percentage bar figure locally, but pass it to the parent so it can save it to conditionHistory
 			//and pass it to <ProductInteractions /> so it can access it
+			console.log(segmentSize)
 			this.setState({
 					numberOfGender,
 					segmentSize,
@@ -169,6 +170,7 @@ class SegmentSize extends Component {
 			}
 
 			//set the local state segment size to the value determined above
+			console.log(segmentSize)
 			this.setState({
 				segmentSize: newSegmentSize,
 			}, this.props.retrieveSegmentSize(newSegmentSize))
@@ -212,6 +214,7 @@ class SegmentSize extends Component {
 						break;
 				}
 
+				console.log(segmentSize)
 				this.setState({
 					segmentSize: newSegmentSize,
 				}, this.props.retrieveSegmentSize(newSegmentSize))
@@ -246,6 +249,7 @@ class SegmentSize extends Component {
 
 			//save the size of the market and percentage bar figure locally, but pass it to the parent so it can save it to conditionHistory
 			//and pass it to <ProductInteractions /> so it can access it
+			console.log(segmentSize)
 			this.setState({
 					numberOfGender,
 					segmentSize,
@@ -308,6 +312,7 @@ class SegmentSize extends Component {
 
 			segmentSize = selectedModifier ? newSegmentSize * coefficient : newSegmentSize / coefficient;
 
+			console.log(segmentSize)
 			this.setState({
 				segmentSize,
 			});
@@ -359,6 +364,8 @@ class SegmentSize extends Component {
 				}
 			};
 
+			segmentSizeCopy = selectedDevice ? newSegmentSize * deviceCoefficient : newSegmentSize / deviceCoefficient;
+
 			if (selectedOperatingSystem != prevProps.selectedOperatingSystem) {
 
 				let operatingSystem = selectedOperatingSystem ? selectedOperatingSystem : oldSelectedOS;
@@ -395,10 +402,8 @@ class SegmentSize extends Component {
 						osCoefficient = .44444445;
 						break;
 				}
-				segmentSizeCopy = selectedOperatingSystem ? newSegmentSize * osCoefficient : newSegmentSize / osCoefficient;
+				segmentSizeCopy = selectedOperatingSystem ? newSegmentSize * osCoefficient : newSegmentSize / (osCoefficient * deviceCoefficient);
 			}
-
-			segmentSizeCopy = selectedDevice ? newSegmentSize * deviceCoefficient : oldSegmentSize / deviceCoefficient;
 
 			if (selectedOperatingSystem != prevProps.selectedOperatingSystem || selectedDevice != prevProps.selectedDevice) {
 				this.setState({
