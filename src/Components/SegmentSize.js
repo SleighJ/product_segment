@@ -15,13 +15,16 @@ class SegmentSize extends Component {
 		this.state = {
 			segmentSize: 100,
 			totalUsers: 2345678,
-			//logic
+			//products
 			previousSegmentSize: null,
 			numberOfGender: null,
 			selectedGender: null,
 			selectedAssociation: null,
 			selectedGarments: [],
 			history: [],
+			//time
+			selectedTimeModifier: null,
+			timeHistoryObject: null,
 		}
 	}
 
@@ -48,9 +51,10 @@ class SegmentSize extends Component {
 	//does not equal the incoming value, and that the local state needs to save the new value.
 
 	componentDidUpdate = (prevProps, prevState) => {
-		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory, removeCurrentProductConditions, lastRemovedHistoryObject } = this.props;
-		const { segmentSize, selectedGender, selectedAssociation, selectedGarments, numberOfGender, history } = this.state;
+		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory, removeCurrentProductConditions, lastRemovedHistoryObject, selectedModifier, selectedDay, selectedStartDay, selectedEndDay } = this.props;
+		const { segmentSize, selectedGender, selectedAssociation, selectedGarments, numberOfGender, history, timeHistoryObject } = this.state
 
+		//TODO: product section needs to account for use case where user is changing products after time has been set, so that time history stays current
 		{/*<--------------------------ProductInteractions: Gender------------------------->*/}
 
 		let startPercent;
@@ -252,21 +256,76 @@ class SegmentSize extends Component {
 			this.props.retrieveSegmentSize(segmentSize),
 			this.props.retrieveRemoveCurrentConditions())
 		}
+
+
+
+		{/*<--------------------------Time Restraints------------------------->*/}
+		if (selectedModifier != prevProps.selectedModifier) {
+			let newSegmentSize = this.state.segmentSize;
+			let coefficient;
+			let segmentSize;
+			let modifier;
+
+			if (selectedModifier) {
+
+				const timeHistoryObject = {
+					conditionHistory,
+					currentConditions: {
+						selectedGender,
+						selectedAssociation,
+						selectedGarments,
+					},
+					timeSnapShot: {
+						selectedModifier,
+						selectedDay,
+						selectedStartDay,
+						selectedEndDay
+					}
+				};
+
+				this.setState({
+					timeHistoryObject,
+				})
+			}
+
+			modifier = selectedModifier ? selectedModifier : timeHistoryObject.timeSnapShot.selectedModifier;
+
+			switch (modifier) {
+				case 'On':
+					coefficient = .55555556;
+					console.log('1')
+					break;
+				case 'Around':
+					coefficient = .88888889;
+					console.log('2')
+					break;
+				case 'Before':
+					coefficient = .77777778;
+					console.log('3')
+					break;
+				case 'Between':
+					coefficient = .666666667;
+					console.log('4')
+					break;
+			}
+
+			segmentSize = selectedModifier ? newSegmentSize * coefficient : newSegmentSize / coefficient;
+
+			this.setState({
+				segmentSize,
+			});
+		}
 	};
 
 	render() {
 
-		const { segmentSize, numberOfGender } = this.state;
+		const { segmentSize } = this.state;
 
 		return (
 				<Segment id={'segment-size'}>
-
 					<Header id={'header'} as={'h4'} style={{fontFamily: 'IBM Plex Sans'}}> Estimated segment size </Header>
-
 					<p style={{fontFamily: 'IBM Plex Sans'}}> % of your total traffic expected to join based on a sample of historical data </p>
-
 					<Progress id={'progress'} color={'green'} size={'medium'} percent={ Number.parseFloat(segmentSize).toFixed(2) } progress/>
-
 				</Segment>
 		);
 	}

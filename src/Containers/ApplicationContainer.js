@@ -105,40 +105,7 @@ export default class ApplicationContainer extends Component {
 		})
 	};
 
-	retrieveRemovedHistoryCondition = (removedHistoryObject, oldConditionHistory, newConditionHistory) => {
-		// let placement;
-		//
-		// const oldConditionHistoryIndex = oldConditionHistory.findIndex(function(condition, index) {
-		// 	const conditionId = condition.id;
-		// 	const removedHistoryObjectId = removedHistoryObject.id;
-		// 	return (conditionId === removedHistoryObjectId) ? true : false;
-		// });
-		//
-		// if (oldConditionHistoryIndex == oldConditionHistory.length-1) {
-		// 	placement = 'last'
-		// }
-		//
-		// if (0 < oldConditionHistoryIndex < oldConditionHistory.length-1) {
-		// 	placement = 'middle'
-		// }
-		//
-		//
-		// if (oldConditionHistoryIndex == 0) {
-		// 	placement = 'first'
-		// }
-		//
-		// switch (oldConditionHistoryIndex) {
-		// 	case 'first':
-		// 		console.log('first');
-		// 		break;
-		// 	case 'middle':
-		// 		console.log('middle');
-		// 		break;
-		// 	case 'last':
-		// 		console.log('last');
-		// 		break;
-		// }
-
+	retrieveRemovedHistoryCondition = (removedHistoryObject) => {
 		this.setState({
 			lastRemovedHistoryObject: removedHistoryObject,
 		})
@@ -168,6 +135,10 @@ export default class ApplicationContainer extends Component {
 		this.setState({
 			selectedEndDay,
 		})
+	};
+
+	retrieveTimeHistory = (timeHistoryObject) => {
+		console.log(timeHistoryObject)
 	};
 
 	// Technology
@@ -254,6 +225,7 @@ export default class ApplicationContainer extends Component {
 								retrieveNumberOfGender={ this.retrieveNumberOfGender }
 								retrieveSegmentSize={ this.retrieveSegmentSize }
 								retrieveRemoveCurrentConditions={ this.retrieveRemoveCurrentConditions }
+								retrieveTimeHistory={ this.retrieveTimeHistory }
 							/>
 						</Grid.Column>
 					</Grid.Row>

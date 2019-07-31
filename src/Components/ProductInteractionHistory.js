@@ -43,7 +43,7 @@ class ProductInteractionHistory extends Component {
 			conditionHistory: conditionHistoryCopy,
 		},
 		this.props.retrieveConditionHistory(conditionHistoryCopy),
-		this.props.retrieveRemovedHistoryCondition(removedHistoryObject, conditionHistory, conditionHistoryCopy))
+		this.props.retrieveRemovedHistoryCondition(removedHistoryObject))
 	};
 
 	render(){
