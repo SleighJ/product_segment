@@ -9,7 +9,7 @@ import {
 import '../CSS/SegmentSize.css';
 
 class SegmentSize extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -25,6 +25,8 @@ class SegmentSize extends Component {
 			//time
 			selectedTimeModifier: null,
 			timeHistoryObject: null,
+			//technology
+			technologyHistoryObject: null,
 		}
 	}
 
@@ -51,11 +53,12 @@ class SegmentSize extends Component {
 	//does not equal the incoming value, and that the local state needs to save the new value.
 
 	componentDidUpdate = (prevProps, prevState) => {
-		const { currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory, removeCurrentProductConditions, lastRemovedHistoryObject, selectedModifier, selectedDay, selectedStartDay, selectedEndDay } = this.props;
-		const { segmentSize, selectedGender, selectedAssociation, selectedGarments, numberOfGender, history, timeHistoryObject } = this.state
+		const {currentlySelectedGarments, currentlySelectedAssociation, currentlySelectedGender, conditionHistory, removeCurrentProductConditions, lastRemovedHistoryObject, selectedModifier, selectedDay, selectedStartDay, selectedEndDay, selectedDevice, selectedOperatingSystem} = this.props;
+		const {segmentSize, selectedGender, selectedAssociation, selectedGarments, history, timeHistoryObject, technologyHistoryObject} = this.state
 
 		//TODO: product section needs to account for use case where user is changing products after time has been set, so that time history stays current
-		{/*<--------------------------ProductInteractions: Gender------------------------->*/}
+		{/*<--------------------------ProductInteractions: Gender------------------------->*/
+		}
 
 		let startPercent;
 		let numberOfGenderConditionHistory;
@@ -119,17 +122,16 @@ class SegmentSize extends Component {
 			//save the size of the market and percentage bar figure locally, but pass it to the parent so it can save it to conditionHistory
 			//and pass it to <ProductInteractions /> so it can access it
 			this.setState({
-				numberOfGender,
-				segmentSize,
-			},
-			this.props.retrieveNumberOfGender(numberOfGender),
-			this.props.retrieveSegmentSize(segmentSize))
+					numberOfGender,
+					segmentSize,
+				},
+				this.props.retrieveNumberOfGender(numberOfGender),
+				this.props.retrieveSegmentSize(segmentSize))
 		}
 
 
-
-
-		{/*<--------------------------ProductInteractions: Association------------------------->*/}
+		{/*<--------------------------ProductInteractions: Association------------------------->*/
+		}
 
 		//if there is a selectedAssociation, save it locally
 		if (currentlySelectedAssociation != prevProps.currentlySelectedAssociation) {
@@ -140,9 +142,8 @@ class SegmentSize extends Component {
 		}
 
 
-
-
-		{/*<--------------------------ProductInteractions: Selected Garments------------------------->*/}
+		{/*<--------------------------ProductInteractions: Selected Garments------------------------->*/
+		}
 
 		//if currentlySelectedGarments does not equal the previous currentlySelectedGarments, user is making a change to the selected Garments
 		if (currentlySelectedGarments.length != prevProps.currentlySelectedGarments.length) {
@@ -170,13 +171,12 @@ class SegmentSize extends Component {
 			//set the local state segment size to the value determined above
 			this.setState({
 				segmentSize: newSegmentSize,
-			}, 	this.props.retrieveSegmentSize(newSegmentSize))
+			}, this.props.retrieveSegmentSize(newSegmentSize))
 		}
 
 
-
-
-		{/*<--------------------------ProductInteractions: Condition History------------------------->*/}
+		{/*<--------------------------ProductInteractions: Condition History------------------------->*/
+		}
 
 		if (conditionHistory.length != history.length) {
 
@@ -214,7 +214,7 @@ class SegmentSize extends Component {
 
 				this.setState({
 					segmentSize: newSegmentSize,
-				}, 	this.props.retrieveSegmentSize(newSegmentSize))
+				}, this.props.retrieveSegmentSize(newSegmentSize))
 			}
 
 			this.setState({
@@ -222,7 +222,8 @@ class SegmentSize extends Component {
 			});
 		}
 
-		{/*<--------------------------ProductInteractions: Current Condition Removal------------------------->*/}
+		{/*<--------------------------ProductInteractions: Current Condition Removal------------------------->*/
+		}
 
 		if (removeCurrentProductConditions) {
 			//if there is no selectedGender (ie, user removed condition)
@@ -246,20 +247,20 @@ class SegmentSize extends Component {
 			//save the size of the market and percentage bar figure locally, but pass it to the parent so it can save it to conditionHistory
 			//and pass it to <ProductInteractions /> so it can access it
 			this.setState({
-				numberOfGender,
-				segmentSize,
-				selectedGarments: [],
-				selectedGender: null,
-				selectedAssociation: null,
-			},
-			this.props.retrieveNumberOfGender(numberOfGender),
-			this.props.retrieveSegmentSize(segmentSize),
-			this.props.retrieveRemoveCurrentConditions())
+					numberOfGender,
+					segmentSize,
+					selectedGarments: [],
+					selectedGender: null,
+					selectedAssociation: null,
+				},
+				this.props.retrieveNumberOfGender(numberOfGender),
+				this.props.retrieveSegmentSize(segmentSize),
+				this.props.retrieveRemoveCurrentConditions())
 		}
 
 
-
-		{/*<--------------------------Time Restraints------------------------->*/}
+		{/*<--------------------------Time Restraints------------------------->*/
+		}
 		if (selectedModifier != prevProps.selectedModifier) {
 			let newSegmentSize = this.state.segmentSize;
 			let coefficient;
@@ -293,19 +294,15 @@ class SegmentSize extends Component {
 			switch (modifier) {
 				case 'On':
 					coefficient = .55555556;
-					console.log('1')
 					break;
 				case 'Around':
 					coefficient = .88888889;
-					console.log('2')
 					break;
 				case 'Before':
 					coefficient = .77777778;
-					console.log('3')
 					break;
 				case 'Between':
 					coefficient = .666666667;
-					console.log('4')
 					break;
 			}
 
@@ -314,6 +311,101 @@ class SegmentSize extends Component {
 			this.setState({
 				segmentSize,
 			});
+		}
+
+		{/*<--------------------------Technology Restraints------------------------->*/}
+
+
+		if (selectedDevice || prevProps.selectedDevice) {
+
+			const newSegmentSize = this.state.segmentSize;
+			const oldSegmentSize = technologyHistoryObject ? technologyHistoryObject.technologySnapShot.segmentSize : null;
+			const oldSelectedOS = technologyHistoryObject ? technologyHistoryObject.technologySnapShot.selectedOperatingSystem : null;
+			const oldSelectedDevice = technologyHistoryObject ? technologyHistoryObject.technologySnapShot.selectedDevice : null;
+
+			let segmentSizeCopy;
+			let deviceCoefficient;
+			let osCoefficient;
+			let device;
+
+			device = selectedDevice ? selectedDevice : oldSelectedDevice;
+
+			switch (device) {
+				case 'Computer':
+					deviceCoefficient = .6666667;
+					break;
+				case 'Mobile':
+					deviceCoefficient = .8888889;
+					break;
+			}
+
+			const technologyHistoryObj = {
+				conditionHistory,
+				currentConditions: {
+					selectedGender,
+					selectedAssociation,
+					selectedGarments
+				},
+				timeSnapShot: {
+					selectedModifier,
+					selectedDay,
+					selectedStartDay,
+					selectedEndDay
+				},
+				technologySnapShot: {
+					selectedDevice,
+					selectedOperatingSystem,
+					segmentSize: newSegmentSize,
+				}
+			};
+
+			if (selectedOperatingSystem != prevProps.selectedOperatingSystem) {
+
+				let operatingSystem = selectedOperatingSystem ? selectedOperatingSystem : oldSelectedOS;
+
+				switch (operatingSystem) {
+					case 'MacOS':
+						osCoefficient = .88888889;
+						break;
+					case 'Windows':
+						osCoefficient = .88888889;
+						break;
+					case 'Unix':
+						osCoefficient = .66666667;
+						break;
+					case 'Ubuntu':
+						osCoefficient = .33333334;
+						break;
+					case 'Linux':
+						osCoefficient = .22222223;
+						break;
+					case 'iOS':
+						osCoefficient = .99999999;
+						break;
+					case 'Android':
+						osCoefficient = .88888889;
+						break;
+					case 'Bada (Samsung)':
+						osCoefficient = .22222223;
+						break;
+					case 'Blackberry OS':
+						osCoefficient = .33333334;
+						break;
+					case 'Windows Mobile':
+						osCoefficient = .44444445;
+						break;
+				}
+				segmentSizeCopy = selectedOperatingSystem ? newSegmentSize * osCoefficient : newSegmentSize / osCoefficient;
+			}
+
+			segmentSizeCopy = selectedDevice ? newSegmentSize * deviceCoefficient : oldSegmentSize / deviceCoefficient;
+
+			if (selectedOperatingSystem != prevProps.selectedOperatingSystem || selectedDevice != prevProps.selectedDevice) {
+				this.setState({
+					technologyHistoryObject: technologyHistoryObj,
+					segmentSize: segmentSizeCopy,
+				})
+			}
 		}
 	};
 
